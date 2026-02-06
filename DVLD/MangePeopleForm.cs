@@ -40,6 +40,7 @@ namespace DVLD
         {
             DVLD_BusinessLogicLayer.UserService userService = new DVLD_BusinessLogicLayer.UserService();
             dataGridViewUsers.DataSource = userService.GetUsers();
+            dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

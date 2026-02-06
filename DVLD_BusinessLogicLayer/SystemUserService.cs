@@ -50,7 +50,7 @@ namespace DVLD_BusinessLogicLayer
             this.IsActive = isActive;
             this.mode = enMode.Update;
         }
-        public DataTable GetSystemUsers()
+        public static DataTable GetSystemUsers()
         {
             return DVLD_DataAccessLayer.SystemUserRepository.GetSystemUsers();
         }
@@ -99,6 +99,11 @@ namespace DVLD_BusinessLogicLayer
         public bool AddNew()
         {
             return DVLD_DataAccessLayer.SystemUserRepository.AddNewSystemUser(this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
+        }
+
+        public bool Delete()
+        {
+            return DVLD_DataAccessLayer.SystemUserRepository.DeleteSystemUser(this.System_User_Id);
         }
 
         public bool Save()

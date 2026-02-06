@@ -37,7 +37,11 @@
             toolStripSeparator4 = new ToolStripSeparator();
             toolStripButton4 = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
-            toolStripButton5 = new ToolStripButton();
+            toolStripButton5 = new ToolStripDropDownButton();
+            curentUserInfoToolStripMenuItem = new ToolStripMenuItem();
+            chagePasswordToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator5 = new ToolStripSeparator();
+            sigToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -102,6 +106,7 @@
             toolStripButton4.Name = "toolStripButton4";
             toolStripButton4.Size = new Size(96, 46);
             toolStripButton4.Text = "Users ";
+            toolStripButton4.Click += toolStripButton4_Click;
             // 
             // toolStripSeparator3
             // 
@@ -110,11 +115,40 @@
             // 
             // toolStripButton5
             // 
+            toolStripButton5.DropDownItems.AddRange(new ToolStripItem[] { curentUserInfoToolStripMenuItem, chagePasswordToolStripMenuItem, toolStripSeparator5, sigToolStripMenuItem });
             toolStripButton5.Image = DVLD_Persntation.Properties.Resources.account_settings;
             toolStripButton5.ImageTransparentColor = Color.Magenta;
             toolStripButton5.Name = "toolStripButton5";
-            toolStripButton5.Size = new Size(169, 46);
+            toolStripButton5.Size = new Size(178, 46);
             toolStripButton5.Text = "Account Settings";
+            // 
+            // curentUserInfoToolStripMenuItem
+            // 
+            curentUserInfoToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.information;
+            curentUserInfoToolStripMenuItem.Name = "curentUserInfoToolStripMenuItem";
+            curentUserInfoToolStripMenuItem.Size = new Size(222, 48);
+            curentUserInfoToolStripMenuItem.Text = "curent user info";
+            curentUserInfoToolStripMenuItem.Click += curentUserInfoToolStripMenuItem_Click;
+            // 
+            // chagePasswordToolStripMenuItem
+            // 
+            chagePasswordToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.padlock;
+            chagePasswordToolStripMenuItem.Name = "chagePasswordToolStripMenuItem";
+            chagePasswordToolStripMenuItem.Size = new Size(222, 48);
+            chagePasswordToolStripMenuItem.Text = "change password";
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(219, 6);
+            // 
+            // sigToolStripMenuItem
+            // 
+            sigToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.log_out;
+            sigToolStripMenuItem.Name = "sigToolStripMenuItem";
+            sigToolStripMenuItem.Size = new Size(222, 48);
+            sigToolStripMenuItem.Text = "sign out";
+            sigToolStripMenuItem.Click += sigToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 
@@ -151,11 +185,15 @@
         private ToolStripButton TSBtnPeople;
         private ToolStripButton toolStripButton3;
         private ToolStripButton toolStripButton4;
-        private ToolStripButton toolStripButton5;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripSeparator toolStripSeparator3;
         private PictureBox pictureBox1;
+        private ToolStripDropDownButton toolStripButton5;
+        private ToolStripMenuItem curentUserInfoToolStripMenuItem;
+        private ToolStripMenuItem chagePasswordToolStripMenuItem;
+        private ToolStripMenuItem sigToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }

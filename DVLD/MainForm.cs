@@ -1,4 +1,5 @@
 ﻿using DVLD_BusinessLogicLayer;
+using DVLD_Persntation;
 
 namespace DVLD
 {
@@ -19,6 +20,14 @@ namespace DVLD
             };
         }
 
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+            currentChildForm?.Close();
+
+            // أظهر LoginForm تاني
+            Application.OpenForms[0]?.Show();
+        }
         private void TSBtnPeople_Click(object sender, EventArgs e)
         {
             // شيك لو نفس الفورم فاتح، ما تفتحش تاني
@@ -37,6 +46,21 @@ namespace DVLD
 
         }
 
+        private void sigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            curentLonginSystemUser = null;
+            this.Close();
+        }
 
+        private void curentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SystemUserInfoForm systemUserInfoForm = new SystemUserInfoForm(curentLonginSystemUser.System_User_Id);
+            systemUserInfoForm.ShowDialog();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MangeSystemUser());
+        }
     }
 }

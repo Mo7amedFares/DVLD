@@ -1,0 +1,15 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="DVLD/DVLD_Persntation.csproj">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="DVLD_BusinessLogicLayer/DVLD_BusinessLogicLayer.csproj" Id="42ef392b-46a3-4512-8e81-cf1e46bfc3e1">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="DVLD_DataAccessLayer/DVLD_DataAccessLayer.csproj" Id="30c4a73c-38bf-4374-9744-8796adca0c54">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+</Solution>

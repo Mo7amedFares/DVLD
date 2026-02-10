@@ -466,7 +466,7 @@
             // 
             // PbImage
             // 
-            PbImage.Image = Properties.Resources.user;
+            PbImage.Image = Properties.Resources.default_profile_picture;
             PbImage.Location = new Point(710, 68);
             PbImage.Margin = new Padding(4);
             PbImage.Name = "PbImage";

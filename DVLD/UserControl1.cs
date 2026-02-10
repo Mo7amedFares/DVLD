@@ -12,8 +12,8 @@ namespace DVLD_Persntation
         public void LoadData(int userId)
         {
             this.userId = userId;
-            UserService userService = new UserService();
-            userService = userService.GetUserById(userId); // Example user ID
+            UserService userService =  UserService.GetUserById(userId);
+         
 
             if (userService == null)
             {
@@ -127,7 +127,7 @@ namespace DVLD_Persntation
 
         private void lkRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PbImage.Image = Properties.Resources.user;
+            PbImage.Image = Properties.Resources.default_profile_picture;
             PbImage.ImageLocation = "";
         }
     }

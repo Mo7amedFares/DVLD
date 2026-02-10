@@ -8,6 +8,8 @@ namespace DVLD_Persntation
         public LoginForm()
         {
             InitializeComponent();
+            tbPassword.UseSystemPasswordChar = true;
+            tbPassword.PasswordChar = '*';
             LoadLoginForm();
         }
 

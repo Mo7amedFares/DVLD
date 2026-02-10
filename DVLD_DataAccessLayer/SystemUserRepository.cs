@@ -133,7 +133,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static bool UpdateSystemUser(int SystemUserId, int User_ID, string Username, string Password, int? Permission, bool isActive)
+        public static bool UpdateSystemUser( int User_ID, string Username, string Password, int? Permission, bool isActive)
         {
             try
             {
@@ -142,7 +142,6 @@ namespace DVLD_DataAccessLayer
                     using (SqlCommand cmd = new SqlCommand("UpdateSystemUser", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@SystemUserId", SystemUserId);
                         cmd.Parameters.AddWithValue("@User_ID", User_ID);
                         cmd.Parameters.AddWithValue("@Username", Username);
                         cmd.Parameters.AddWithValue("@Password", Password);
@@ -163,7 +162,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static bool AddNewSystemUser(int User_ID, string Username, string Password, int? Permission, bool isActive)
+        public static int AddNewSystemUser(int User_ID, string Username, string Password, int? Permission, bool isActive)
         {
             try
             {
@@ -175,21 +174,27 @@ namespace DVLD_DataAccessLayer
                         cmd.Parameters.AddWithValue("@User_ID", User_ID);
                         cmd.Parameters.AddWithValue("@Username", Username);
                         cmd.Parameters.AddWithValue("@Password", Password);
-                        cmd.Parameters.AddWithValue("@Permission", Permission);
+                        cmd.Parameters.AddWithValue("@Permission", (object?)Permission ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@isActive", isActive);
+
+                        SqlParameter outputParam = new SqlParameter("@NewSystemUserID", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
                         con.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        con.Close();
-                        return rowsAffected > 0;
+                        cmd.ExecuteNonQuery();
+
+                        return (int)outputParam.Value;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Log the error or handle it appropriately
                 throw;
             }
-            return false;
+            return -1;
         }
 
         public static bool DeleteSystemUser(int SystemUserId)

@@ -2,6 +2,7 @@
 // System.Data.SqlClient
 
 using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using System.Data;
 
 namespace DVLD_DataAccessLayer
@@ -31,6 +32,7 @@ namespace DVLD_DataAccessLayer
 
         public static bool GetUserById(int userId, ref string First_Name, ref string Secound_Name, ref string Third_Name, ref string Last_Name, ref DateTime Date_Of_Birth, ref int Age, ref string Email, ref string Phone, ref string Nationality, ref string Address, ref string Profile_Photo_URL, ref char Gender, ref string SSN)
         {
+            bool found = false;
             try
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
@@ -58,10 +60,11 @@ namespace DVLD_DataAccessLayer
                                 Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
                                 SSN = reader["SSN"].ToString();
                                 Gender = Convert.ToChar(reader["Gender"]);
+                                found = true;
                             }
                         }
                         con.Close();
-                        return true;
+                        return found;
                     }
                 }
             }
@@ -70,7 +73,143 @@ namespace DVLD_DataAccessLayer
                 // Log the error or handle it appropriately
                 throw;
             }
-            return false;
+            return found;
+        }
+
+        public static bool GetUserBySSN(string ssn, ref int User_ID, ref string First_Name, ref string Secound_Name, ref string Third_Name, ref string Last_Name, ref DateTime Date_Of_Birth, ref int Age, ref string Email, ref string Phone, ref string Nationality, ref string Address, ref string Profile_Photo_URL, ref char Gender)
+        {
+            bool found = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("GetUserBySSN", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@SSN", ssn);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                First_Name = reader["First_Name"].ToString();
+                                Secound_Name = reader["Second_Name"].ToString();
+                                Third_Name = reader["Third_Name"].ToString();
+                                Last_Name = reader["Last_Name"].ToString();
+                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = Convert.ToInt32(reader["Age"]);
+                                Email = reader["Email"].ToString();
+                                Phone = reader["Phone"].ToString();
+                                Address = reader["Address"].ToString();
+                                Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
+                                Nationality = reader["Nationality"].ToString();
+                                Gender = Convert.ToChar(reader["Gender"]);
+
+                                found = true;
+                            }
+                        }
+                        con.Close();
+                        return found;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                throw;
+            }
+            return found;
+        }
+
+        public static bool GetUserByEmail(string email, ref int User_ID, ref string First_Name, ref string Secound_Name, ref string Third_Name, ref string Last_Name, ref DateTime Date_Of_Birth, ref int Age, ref string Phone, ref string Nationality, ref string Address, ref string Profile_Photo_URL, ref char Gender, ref string SSN)
+        {
+            bool found = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("GetUserByEmail", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                First_Name = reader["First_Name"].ToString();
+                                Secound_Name = reader["Second_Name"].ToString();
+                                Third_Name = reader["Third_Name"].ToString();
+                                Last_Name = reader["Last_Name"].ToString();
+                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = Convert.ToInt32(reader["Age"]);
+                                Phone = reader["Phone"].ToString();
+                                Nationality = reader["Nationality"].ToString();
+                                Address = reader["Address"].ToString();
+                                Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
+                                SSN = reader["SSN"].ToString();
+                                Gender = Convert.ToChar(reader["Gender"]);
+                                found = true;
+                            }
+                        }
+                        con.Close();
+                        return found;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                throw;
+            }
+            return found;
+        }
+
+        public static bool GetUserByPhone(string phone, ref int User_ID, ref string First_Name, ref string Secound_Name, ref string Third_Name, ref string Last_Name, ref DateTime Date_Of_Birth, ref int Age, ref string Email, ref string Nationality, ref string Address, ref string Profile_Photo_URL, ref char Gender, ref string SSN)
+        {
+            bool found = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    string query = $"select * from Users where Users.Phone = '{phone}'";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                First_Name = reader["First_Name"].ToString();
+                                Secound_Name = reader["Second_Name"].ToString();
+                                Third_Name = reader["Third_Name"].ToString();
+                                Last_Name = reader["Last_Name"].ToString();
+                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = Convert.ToInt32(reader["Age"]);
+                                Email = reader["Email"].ToString();
+                                Nationality = reader["Nationality"].ToString();
+                                Address = reader["Address"].ToString();
+                                Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
+                                SSN = reader["SSN"].ToString();
+                                Gender = Convert.ToChar(reader["Gender"]);
+                                found = true;
+                            }
+                        }
+                        con.Close();
+                        return found;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                throw;
+            }
+            return found;
         }
 
         public static bool UpdateUser(int userId, string firstName, string secondName, string thirdName, string lastName, DateTime dateOfBirth, int age, string email, string phone, string nationality, string address, string profilePhotoURL, char gender, string ssn)

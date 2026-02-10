@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Runtime.Intrinsics.X86;
 
 namespace DVLD_BusinessLogicLayer
 {
@@ -64,7 +65,7 @@ namespace DVLD_BusinessLogicLayer
             return DVLD_DataAccessLayer.UserRepository.GetUsers();
         }
 
-        public UserService GetUserById(int userId)
+        public static UserService GetUserById(int userId)
         {
             // Initialize variables to default values to avoid CS0165 and CS8601
             string first_Name = string.Empty;
@@ -86,6 +87,77 @@ namespace DVLD_BusinessLogicLayer
             {
 
                 return new UserService(userId, first_Name, secound_Name, third_Name, last_Name, date_Of_Birth, age, email, phone, nationality, address, profile_Photo_URL, gender, sSN);
+
+            }
+            return null;
+        }
+
+        public static UserService GetUserBySSN(string ssn)
+        {
+            // Initialize variables to default values to avoid CS0165 and CS8601
+            int user_ID = 0;
+            string first_Name = string.Empty;
+            string secound_Name = string.Empty;
+            string third_Name = string.Empty;
+            string last_Name = string.Empty;
+            DateTime date_Of_Birth = default;
+            int age = 0;
+            string email = string.Empty;
+            string phone = string.Empty;
+            string nationalty = string.Empty;
+            string address = string.Empty;
+            string profile_Photo_URL = string.Empty;
+            char gender = '\0';
+            if (DVLD_DataAccessLayer.UserRepository.GetUserBySSN(ssn, ref user_ID, ref first_Name, ref secound_Name, ref third_Name, ref last_Name, ref date_Of_Birth, ref age, ref email, ref phone, ref nationalty, ref address, ref profile_Photo_URL, ref gender))
+            {
+                return new UserService(user_ID, first_Name, secound_Name, third_Name, last_Name, date_Of_Birth, age, email, phone, nationalty, address, profile_Photo_URL , gender , ssn);
+            }
+            return null;
+        }
+
+        public static UserService GetUserByEmail(string email)
+        {
+            // Initialize variables to default values to avoid CS0165 and CS8601
+            int user_ID = 0;
+            string first_Name = string.Empty;
+            string secound_Name = string.Empty;
+            string third_Name = string.Empty;
+            string last_Name = string.Empty;
+            DateTime date_Of_Birth = default;
+            int age = 0;
+            string phone = string.Empty;
+            string nationalty = string.Empty;
+            string address = string.Empty;
+            string profile_Photo_URL = string.Empty;
+            char gender = '\0';
+            string sSN = string.Empty;
+
+            if (DVLD_DataAccessLayer.UserRepository.GetUserByEmail(email, ref user_ID, ref first_Name, ref secound_Name, ref third_Name, ref last_Name, ref date_Of_Birth, ref age, ref phone, ref nationalty, ref address, ref profile_Photo_URL, ref gender, ref sSN)) ;
+            {
+                return new UserService(user_ID, first_Name, secound_Name, third_Name, last_Name, date_Of_Birth, age, email, phone, nationalty, address, profile_Photo_URL, gender, sSN);
+            }
+            return null;
+        }
+        public static UserService GetUserByPhone(string email)
+        {
+            // Initialize variables to default values to avoid CS0165 and CS8601
+            int user_ID = 0;
+            string first_Name = string.Empty;
+            string secound_Name = string.Empty;
+            string third_Name = string.Empty;
+            string last_Name = string.Empty;
+            DateTime date_Of_Birth = default;
+            int age = 0;
+            string phone = string.Empty;
+            string nationalty = string.Empty;
+            string address = string.Empty;
+            string profile_Photo_URL = string.Empty;
+            char gender = '\0';
+            string sSN = string.Empty;
+
+            if (DVLD_DataAccessLayer.UserRepository.GetUserByPhone(phone, ref user_ID, ref first_Name, ref secound_Name, ref third_Name, ref last_Name, ref date_Of_Birth, ref age, ref email, ref nationalty, ref address, ref profile_Photo_URL, ref gender, ref sSN))
+            {
+                return new UserService(user_ID, first_Name, secound_Name, third_Name, last_Name, date_Of_Birth, age, email, phone, nationalty, address, profile_Photo_URL, gender, sSN);
             }
             return null;
         }

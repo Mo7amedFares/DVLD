@@ -25,7 +25,8 @@ namespace DVLD_Persntation
 
         private void BtnAddNewUser_Click(object sender, EventArgs e)
         {
-
+            AddOrUpdateSystemUserForm addNewSystemUserForm = new AddOrUpdateSystemUserForm(-1);
+            addNewSystemUserForm.ShowDialog();
         }
 
         //private void showPersonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,26 +190,33 @@ namespace DVLD_Persntation
 
         private void CbIsActive_SelectedIndexChanged(object sender, EventArgs e)
         {
-                if (CbIsActive.SelectedItem == "All")
-                {
-                    dataGridViewUsers.DataSource = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUsers();
-                }
-                else if (CbIsActive.SelectedItem == "True")
-                {
-                    DataTable usersTable = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUsers();
-                    DataView dv = new DataView(usersTable);
-                    dv.RowFilter = $"{CPoxFilterBy.SelectedItem} = True";
-                    dataGridViewUsers.DataSource = dv;
-                }
-                else if (CbIsActive.SelectedItem == "False")
-                {
-                    DataTable usersTable = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUsers();
-                    DataView dv = new DataView(usersTable);
-                    dv.RowFilter = $"{CPoxFilterBy.SelectedItem} = False";
-                    dataGridViewUsers.DataSource = dv;
-                }
-            
-           
+            if (CbIsActive.SelectedItem == "All")
+            {
+                dataGridViewUsers.DataSource = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUsers();
+            }
+            else if (CbIsActive.SelectedItem == "True")
+            {
+                DataTable usersTable = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUsers();
+                DataView dv = new DataView(usersTable);
+                dv.RowFilter = $"{CPoxFilterBy.SelectedItem} = True";
+                dataGridViewUsers.DataSource = dv;
+            }
+            else if (CbIsActive.SelectedItem == "False")
+            {
+                DataTable usersTable = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUsers();
+                DataView dv = new DataView(usersTable);
+                dv.RowFilter = $"{CPoxFilterBy.SelectedItem} = False";
+                dataGridViewUsers.DataSource = dv;
+            }
+
+
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddOrUpdateSystemUserForm updateUserForm = new AddOrUpdateSystemUserForm(Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["System_User_ID"].Value));
+            updateUserForm.ShowDialog();
+             fillUsersDataGridView();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DVLD_BusinessLogicLayer
         public int? Permission { get; set; }
         public bool IsActive { get; set; }
 
-        private enum enMode
+        public enum enMode
         {
             Add,
             Update
@@ -24,7 +24,7 @@ namespace DVLD_BusinessLogicLayer
             UserNotFound,
             InvalidPassword
         }
-        private enMode mode;
+        public enMode mode;
         public SystemUserService()
         {
             this.mode = enMode.Add;
@@ -93,12 +93,14 @@ namespace DVLD_BusinessLogicLayer
 
         public bool Update()
         {
-            return DVLD_DataAccessLayer.SystemUserRepository.UpdateSystemUser(this.System_User_Id, this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
+            return DVLD_DataAccessLayer.SystemUserRepository.UpdateSystemUser( this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
         }
+
 
         public bool AddNew()
         {
-            return DVLD_DataAccessLayer.SystemUserRepository.AddNewSystemUser(this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
+            this.System_User_Id = DVLD_DataAccessLayer.SystemUserRepository.AddNewSystemUser(this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
+            return this.System_User_Id != -1;
         }
 
         public bool Delete()

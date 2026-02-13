@@ -18,6 +18,13 @@ namespace DVLD_Persntation
         public void loadData(int SystemUserID)
         {
             var systemUser = DVLD_BusinessLogicLayer.SystemUserService.GetSystemUserById(SystemUserID);
+            
+            if (systemUser == null)
+            {
+                MessageBox.Show("System user not found.");
+                return;
+            }
+            
             lblSystemUserID.Text = systemUser.System_User_Id.ToString();
             lblUserName.Text = systemUser.Username;
             lblIsActive.Text = systemUser.IsActive ? "Yes" : "No";

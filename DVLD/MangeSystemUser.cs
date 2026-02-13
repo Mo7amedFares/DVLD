@@ -27,6 +27,7 @@ namespace DVLD_Persntation
         {
             AddOrUpdateSystemUserForm addNewSystemUserForm = new AddOrUpdateSystemUserForm(-1);
             addNewSystemUserForm.ShowDialog();
+            fillUsersDataGridView();
         }
 
         //private void showPersonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -216,7 +217,18 @@ namespace DVLD_Persntation
         {
             AddOrUpdateSystemUserForm updateUserForm = new AddOrUpdateSystemUserForm(Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["System_User_ID"].Value));
             updateUserForm.ShowDialog();
-             fillUsersDataGridView();
+            fillUsersDataGridView();
+        }
+
+        private void dataGridViewUsers_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordSystemUserForm changePasswordSystemUserForm = new ChangePasswordSystemUserForm(Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["System_User_ID"].Value));
+            changePasswordSystemUserForm.ShowDialog();
         }
     }
 }

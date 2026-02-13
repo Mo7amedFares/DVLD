@@ -135,7 +135,14 @@ namespace DVLD_Persntation
         private void BtnAddNewUser_Click(object sender, EventArgs e)
         {
             NewOrUpdateUserForm newOrUpdateUserForm = new NewOrUpdateUserForm(-1);
+            newOrUpdateUserForm.DataBackEvent += NewOrUpdateUserForm_DataBackEvent;
             newOrUpdateUserForm.ShowDialog();
+        }
+
+        private void NewOrUpdateUserForm_DataBackEvent(object sender, int id)
+        {
+            tbTextFiltter.Text = id.ToString();
+            button1_Click(this, EventArgs.Empty); // إعادة تحميل البيانات بعد إضافة مستخدم جديد
         }
 
         private void btnNextPage_Click(object sender, EventArgs e)
@@ -198,7 +205,7 @@ namespace DVLD_Persntation
                     User_ID = personID,
                     Username = tbUserName.Text,
                     Password = tbPassword.Text,
-                    Permission = null,
+                    //Permission = null,
                     IsActive = isActive
                 };
                 systemUser.mode = SystemUserService.enMode.Add;
@@ -220,6 +227,11 @@ namespace DVLD_Persntation
             {
                 MessageBox.Show("Failed to save system user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCloase_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

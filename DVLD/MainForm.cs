@@ -62,5 +62,11 @@ namespace DVLD
         {
             openChildForm(new MangeSystemUser());
         }
+
+        private void chagePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordSystemUserForm changePasswordForm = new ChangePasswordSystemUserForm(curentLonginSystemUser.System_User_Id);
+            changePasswordForm.ShowDialog();
+        }
     }
 }

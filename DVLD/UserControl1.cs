@@ -4,6 +4,8 @@ namespace DVLD_Persntation
 {
     public partial class UserControl1 : UserControl
     {
+        public delegate void DataBackDelegate(object sender, int id);
+        public event DataBackDelegate DataBackEvent;
         public UserControl1()
         {
             InitializeComponent();
@@ -88,6 +90,10 @@ namespace DVLD_Persntation
             bool isSaved = user.Save();
             if (isSaved)
             {
+                if (DataBackEvent != null)
+                {
+                    DataBackEvent(this, user.User_ID);
+                }
                 MessageBox.Show("User information saved successfully.");
             }
             else
@@ -127,7 +133,7 @@ namespace DVLD_Persntation
 
         private void lkRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PbImage.Image = Properties.Resources.default_profile_picture;
+            PbImage.Image = Properties.Resources.user;
             PbImage.ImageLocation = "";
         }
     }

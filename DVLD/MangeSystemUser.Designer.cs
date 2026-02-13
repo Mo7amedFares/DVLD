@@ -45,6 +45,7 @@
             addPeopleToolStripMenuItem = new ToolStripMenuItem();
             label3 = new Label();
             CbIsActive = new ComboBox();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -120,13 +121,14 @@
             dataGridViewUsers.ReadOnly = true;
             dataGridViewUsers.Size = new Size(976, 357);
             dataGridViewUsers.TabIndex = 14;
+            dataGridViewUsers.CellContentClick += dataGridViewUsers_CellContentClick_1;
             // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showPersonToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addPeopleToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showPersonToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, changePasswordToolStripMenuItem, addPeopleToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(184, 120);
+            contextMenuStrip1.Size = new Size(184, 142);
             // 
             // showPersonToolStripMenuItem
             // 
@@ -183,6 +185,14 @@
             CbIsActive.Visible = false;
             CbIsActive.SelectedIndexChanged += CbIsActive_SelectedIndexChanged;
             // 
+            // changePasswordToolStripMenuItem
+            // 
+            changePasswordToolStripMenuItem.Image = Properties.Resources.reset_password1;
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(183, 22);
+            changePasswordToolStripMenuItem.Text = "Change Password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
+            // 
             // MangeSystemUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -223,5 +233,6 @@
         private ToolStripMenuItem addPeopleToolStripMenuItem;
         private Label label3;
         private ComboBox CbIsActive;
+        private ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

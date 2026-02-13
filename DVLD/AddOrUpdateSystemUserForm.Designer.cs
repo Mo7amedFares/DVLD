@@ -116,7 +116,7 @@
             groupBox1.Size = new Size(804, 81);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Seach Person";
             // 
             // button1
             // 
@@ -352,6 +352,7 @@
             btnCloase.TabIndex = 12;
             btnCloase.Text = "Close";
             btnCloase.UseVisualStyleBackColor = true;
+            btnCloase.Click += btnCloase_Click;
             // 
             // btnSave
             // 

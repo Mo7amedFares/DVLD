@@ -35,7 +35,6 @@ namespace DVLD_BusinessLogicLayer
             this.User_ID = user_ID;
             if (user_ID != -1)
             {
-                this.User_ID = user_ID;
                 mode = enMode.Update;
             }
             else
@@ -132,7 +131,7 @@ namespace DVLD_BusinessLogicLayer
             char gender = '\0';
             string sSN = string.Empty;
 
-            if (DVLD_DataAccessLayer.UserRepository.GetUserByEmail(email, ref user_ID, ref first_Name, ref secound_Name, ref third_Name, ref last_Name, ref date_Of_Birth, ref age, ref phone, ref nationalty, ref address, ref profile_Photo_URL, ref gender, ref sSN)) ;
+            if (DVLD_DataAccessLayer.UserRepository.GetUserByEmail(email, ref user_ID, ref first_Name, ref secound_Name, ref third_Name, ref last_Name, ref date_Of_Birth, ref age, ref phone, ref nationalty, ref address, ref profile_Photo_URL, ref gender, ref sSN))
             {
                 return new UserService(user_ID, first_Name, secound_Name, third_Name, last_Name, date_Of_Birth, age, email, phone, nationalty, address, profile_Photo_URL, gender, sSN);
             }
@@ -170,7 +169,8 @@ namespace DVLD_BusinessLogicLayer
 
         private bool AddNewUser()
         {
-            return DVLD_DataAccessLayer.UserRepository.AddNewUser(this.First_Name, this.Second_Name, this.Third_Name, this.Last_Name, this.Date_Of_Birth, this.Age, this.Email, this.Phone, this.Nationality, this.Address, this.Profile_Photo_URL, this.Gender, this.SSN);
+            this.User_ID = DVLD_DataAccessLayer.UserRepository.AddNewUser(this.First_Name, this.Second_Name, this.Third_Name, this.Last_Name, this.Date_Of_Birth, this.Age, this.Email, this.Phone, this.Nationality, this.Address, this.Profile_Photo_URL, this.Gender, this.SSN);
+            return this.User_ID!=-1;
         }
         public bool Save()
         {

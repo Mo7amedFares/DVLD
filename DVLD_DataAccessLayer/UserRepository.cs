@@ -51,15 +51,21 @@ namespace DVLD_DataAccessLayer
                                 Secound_Name = reader["Second_Name"].ToString();
                                 Third_Name = reader["Third_Name"].ToString();
                                 Last_Name = reader["Last_Name"].ToString();
-                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
-                                Age = Convert.ToInt32(reader["Age"]);
+                                Date_Of_Birth = reader.IsDBNull(reader.GetOrdinal("Date_Of_Birth"))
+                                    ? DateTime.MinValue
+                                    : Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = reader.IsDBNull(reader.GetOrdinal("Age"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["Age"]);
                                 Email = reader["Email"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Nationality = reader["Nationality"].ToString();
                                 Address = reader["Address"].ToString();
                                 Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
                                 SSN = reader["SSN"].ToString();
-                                Gender = Convert.ToChar(reader["Gender"]);
+                                Gender = reader.IsDBNull(reader.GetOrdinal("Gender"))
+                                    ? '\0'
+                                    : Convert.ToChar(reader["Gender"]);
                                 found = true;
                             }
                         }
@@ -92,19 +98,27 @@ namespace DVLD_DataAccessLayer
                         {
                             if (reader.Read())
                             {
-                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                User_ID = reader.IsDBNull(reader.GetOrdinal("User_ID"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["User_ID"]);
                                 First_Name = reader["First_Name"].ToString();
                                 Secound_Name = reader["Second_Name"].ToString();
                                 Third_Name = reader["Third_Name"].ToString();
                                 Last_Name = reader["Last_Name"].ToString();
-                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
-                                Age = Convert.ToInt32(reader["Age"]);
+                                Date_Of_Birth = reader.IsDBNull(reader.GetOrdinal("Date_Of_Birth"))
+                                    ? DateTime.MinValue
+                                    : Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = reader.IsDBNull(reader.GetOrdinal("Age"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["Age"]);
                                 Email = reader["Email"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Address = reader["Address"].ToString();
                                 Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
                                 Nationality = reader["Nationality"].ToString();
-                                Gender = Convert.ToChar(reader["Gender"]);
+                                Gender = reader.IsDBNull(reader.GetOrdinal("Gender"))
+                                    ? '\0'
+                                    : Convert.ToChar(reader["Gender"]);
 
                                 found = true;
                             }
@@ -138,19 +152,27 @@ namespace DVLD_DataAccessLayer
                         {
                             if (reader.Read())
                             {
-                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                User_ID = reader.IsDBNull(reader.GetOrdinal("User_ID"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["User_ID"]);
                                 First_Name = reader["First_Name"].ToString();
                                 Secound_Name = reader["Second_Name"].ToString();
                                 Third_Name = reader["Third_Name"].ToString();
                                 Last_Name = reader["Last_Name"].ToString();
-                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
-                                Age = Convert.ToInt32(reader["Age"]);
+                                Date_Of_Birth = reader.IsDBNull(reader.GetOrdinal("Date_Of_Birth"))
+                                    ? DateTime.MinValue
+                                    : Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = reader.IsDBNull(reader.GetOrdinal("Age"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["Age"]);
                                 Phone = reader["Phone"].ToString();
                                 Nationality = reader["Nationality"].ToString();
                                 Address = reader["Address"].ToString();
                                 Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
                                 SSN = reader["SSN"].ToString();
-                                Gender = Convert.ToChar(reader["Gender"]);
+                                Gender = reader.IsDBNull(reader.GetOrdinal("Gender"))
+                                    ? '\0'
+                                    : Convert.ToChar(reader["Gender"]);
                                 found = true;
                             }
                         }
@@ -183,19 +205,27 @@ namespace DVLD_DataAccessLayer
                         {
                             if (reader.Read())
                             {
-                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                User_ID = reader.IsDBNull(reader.GetOrdinal("User_ID"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["User_ID"]);
                                 First_Name = reader["First_Name"].ToString();
                                 Secound_Name = reader["Second_Name"].ToString();
                                 Third_Name = reader["Third_Name"].ToString();
                                 Last_Name = reader["Last_Name"].ToString();
-                                Date_Of_Birth = Convert.ToDateTime(reader["Date_Of_Birth"]);
-                                Age = Convert.ToInt32(reader["Age"]);
+                                Date_Of_Birth = reader.IsDBNull(reader.GetOrdinal("Date_Of_Birth"))
+                                    ? DateTime.MinValue
+                                    : Convert.ToDateTime(reader["Date_Of_Birth"]);
+                                Age = reader.IsDBNull(reader.GetOrdinal("Age"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["Age"]);
                                 Email = reader["Email"].ToString();
                                 Nationality = reader["Nationality"].ToString();
                                 Address = reader["Address"].ToString();
                                 Profile_Photo_URL = reader["Profile_Photo_URL"].ToString();
                                 SSN = reader["SSN"].ToString();
-                                Gender = Convert.ToChar(reader["Gender"]);
+                                Gender = reader.IsDBNull(reader.GetOrdinal("Gender"))
+                                    ? '\0'
+                                    : Convert.ToChar(reader["Gender"]);
                                 found = true;
                             }
                         }
@@ -250,7 +280,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static bool AddNewUser(string firstName, string secondName, string thirdName, string lastName, DateTime dateOfBirth, int age, string email, string phone, string nationality, string address, string profilePhotoURL, char gender, string ssn)
+        public static int AddNewUser(string firstName, string secondName, string thirdName, string lastName, DateTime dateOfBirth, int age, string email, string phone, string nationality, string address, string profilePhotoURL, char gender, string ssn)
         {
             try
             {
@@ -273,18 +303,17 @@ namespace DVLD_DataAccessLayer
                         cmd.Parameters.AddWithValue("@Gender", gender);
                         cmd.Parameters.AddWithValue("@SSN", ssn);
                         con.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                        object result = cmd.ExecuteScalar();
                         con.Close();
-                        return rowsAffected > 0;
+                        return result != null ? Convert.ToInt32(result) : -1;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Log the error or handle it appropriately
                 throw;
             }
-            return false;
+            return -1;
         }
 
 

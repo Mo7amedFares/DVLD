@@ -8,7 +8,7 @@ namespace DVLD_BusinessLogicLayer
         public int User_ID { get; set; }
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public int? Permission { get; set; }
+        //public int? Permission { get; set; }
         public bool IsActive { get; set; }
 
         public enum enMode
@@ -40,13 +40,13 @@ namespace DVLD_BusinessLogicLayer
             else
                 mode = enMode.Add;
         }
-        public SystemUserService(int system_User_Id, int user_ID, string username, string password, int? permission, bool isActive)
+        public SystemUserService(int system_User_Id, int user_ID, string username, string password,/* int? permission,*/ bool isActive)
         {
             this.System_User_Id = system_User_Id;
             this.User_ID = user_ID;
             this.Username = username;
             this.Password = password;
-            this.Permission = permission;
+            //this.Permission = permission;
             this.IsActive = isActive;
             this.mode = enMode.Update;
         }
@@ -59,12 +59,12 @@ namespace DVLD_BusinessLogicLayer
             int user_ID = 0;
             string username = string.Empty;
             string password = string.Empty;
-            int? permission = 0;
+            //int? permission = 0;
             bool isActive = false;
 
-            if (DVLD_DataAccessLayer.SystemUserRepository.GetSystemUserById(SystemUserId, ref user_ID, ref username, ref password, ref permission, ref isActive))
+            if (DVLD_DataAccessLayer.SystemUserRepository.GetSystemUserById(SystemUserId, ref user_ID, ref username, ref password,/* ref permission,*/ ref isActive))
             {
-                return new SystemUserService(SystemUserId, user_ID, username, password, permission, isActive);
+                return new SystemUserService(SystemUserId, user_ID, username, password, /*permission,*/ isActive);
             }
             return null;
         }
@@ -75,9 +75,9 @@ namespace DVLD_BusinessLogicLayer
             string password = string.Empty;
             int? permission = 0;
             bool isActive = false;
-            if (DVLD_DataAccessLayer.SystemUserRepository.GetSystemUserByUsername(username, ref system_User_Id, ref user_ID, ref password, ref permission, ref isActive))
+            if (DVLD_DataAccessLayer.SystemUserRepository.GetSystemUserByUsername(username, ref system_User_Id, ref user_ID, ref password, /*ref permission,*/ ref isActive))
             {
-                return new SystemUserService(system_User_Id, user_ID, username, password, permission, isActive);
+                return new SystemUserService(system_User_Id, user_ID, username, password, /*permission, */isActive);
             }
             return null;
         }
@@ -93,13 +93,13 @@ namespace DVLD_BusinessLogicLayer
 
         public bool Update()
         {
-            return DVLD_DataAccessLayer.SystemUserRepository.UpdateSystemUser( this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
+            return DVLD_DataAccessLayer.SystemUserRepository.UpdateSystemUser( this.User_ID, this.Username, this.Password, /*this.Permission,*/ this.IsActive);
         }
 
 
         public bool AddNew()
         {
-            this.System_User_Id = DVLD_DataAccessLayer.SystemUserRepository.AddNewSystemUser(this.User_ID, this.Username, this.Password, this.Permission, this.IsActive);
+            this.System_User_Id = DVLD_DataAccessLayer.SystemUserRepository.AddNewSystemUser(this.User_ID, this.Username, this.Password, /*this.Permission,*/ this.IsActive);
             return this.System_User_Id != -1;
         }
 
@@ -116,9 +116,9 @@ namespace DVLD_BusinessLogicLayer
                 return Update();
         }
 
-        public static bool ChangePassword(int System_User_Id, string newPassword)
+        public bool ChangePassword( string newPassword)
         {
-            return DVLD_DataAccessLayer.SystemUserRepository.ChangePassword(System_User_Id, newPassword);
+            return DVLD_DataAccessLayer.SystemUserRepository.ChangePassword(this.System_User_Id, newPassword);
         }
 
         public static enStatus Authenticate(string? username, string? password)

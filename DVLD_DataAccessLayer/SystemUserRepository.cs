@@ -28,7 +28,7 @@ namespace DVLD_DataAccessLayer
             return dt;
         }
 
-        public static bool GetSystemUserById(int SystemUserId, ref int User_ID, ref string Username, ref string Password, ref int? Permission, ref bool isActive)
+        public static bool GetSystemUserById(int SystemUserId, ref int User_ID, ref string Username, ref string Password, /*ref int? Permission,*/ ref bool isActive)
         {
             try
             {
@@ -47,8 +47,10 @@ namespace DVLD_DataAccessLayer
                                 User_ID = Convert.ToInt32(reader["User_ID"]);
                                 Username = reader["Username"].ToString();
                                 Password = reader["Password"].ToString();
-                                Permission = Convert.ToInt32(reader["Permission"]);
-                                isActive = Convert.ToBoolean(reader["isActive"]);
+                                //Permission = reader.IsDBNull(reader.GetOrdinal("Permission"))
+                                //    ? null
+                                //    : Convert.ToInt32(reader["Permission"]);
+                                isActive = reader.IsDBNull(reader.GetOrdinal("isActive"));
                                 found = true;
                             }
                         }
@@ -65,7 +67,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static bool GetSystemUserByUserId(int User_ID, ref int SystemUserId, ref string Username, ref string Password, ref int? Permission, ref bool isActive)
+        public static bool GetSystemUserByUserId(int User_ID, ref int SystemUserId, ref string Username, ref string Password /*,ref int? Permission*/, ref bool isActive)
         {
             try
             {
@@ -84,8 +86,10 @@ namespace DVLD_DataAccessLayer
                                 SystemUserId = Convert.ToInt32(reader["system_user_id"]);
                                 Username = reader["Username"].ToString();
                                 Password = reader["Password"].ToString();
-                                Permission = Convert.ToInt32(reader["Permission"]);
-                                isActive = Convert.ToBoolean(reader["isActive"]);
+                                //Permission = reader.IsDBNull(reader.GetOrdinal("Permission"))
+                                //    ? null
+                                //    : Convert.ToInt32(reader["Permission"]);
+                                isActive = reader.IsDBNull(reader.GetOrdinal("isActive"));
                                 found = true;
                             }
                         }
@@ -133,7 +137,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static bool UpdateSystemUser( int User_ID, string Username, string Password, int? Permission, bool isActive)
+        public static bool UpdateSystemUser( int User_ID, string Username, string Password, /*int? Permission,*/ bool isActive)
         {
             try
             {
@@ -145,7 +149,7 @@ namespace DVLD_DataAccessLayer
                         cmd.Parameters.AddWithValue("@User_ID", User_ID);
                         cmd.Parameters.AddWithValue("@Username", Username);
                         cmd.Parameters.AddWithValue("@Password", Password);
-                        cmd.Parameters.AddWithValue("@Permission", Permission);
+                        //cmd.Parameters.AddWithValue("@Permission", Permission);
                         cmd.Parameters.AddWithValue("@isActive", isActive);
                         con.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -162,7 +166,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static int AddNewSystemUser(int User_ID, string Username, string Password, int? Permission, bool isActive)
+        public static int AddNewSystemUser(int User_ID, string Username, string Password, /*int? Permission,*/ bool isActive)
         {
             try
             {
@@ -174,7 +178,7 @@ namespace DVLD_DataAccessLayer
                         cmd.Parameters.AddWithValue("@User_ID", User_ID);
                         cmd.Parameters.AddWithValue("@Username", Username);
                         cmd.Parameters.AddWithValue("@Password", Password);
-                        cmd.Parameters.AddWithValue("@Permission", (object?)Permission ?? DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@Permission", (object?)Permission ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@isActive", isActive);
 
                         SqlParameter outputParam = new SqlParameter("@NewSystemUserID", SqlDbType.Int)
@@ -222,7 +226,7 @@ namespace DVLD_DataAccessLayer
             return false;
         }
 
-        public static bool GetSystemUserByUsername(string username, ref int SystemUserId, ref int User_ID, ref string Password, ref int? Permission, ref bool isActive)
+        public static bool GetSystemUserByUsername(string username, ref int SystemUserId, ref int User_ID, ref string Password, /*ref int? Permission, */ref bool isActive)
         {
             try
             {
@@ -238,11 +242,19 @@ namespace DVLD_DataAccessLayer
                         {
                             if (reader.Read())
                             {
-                                SystemUserId = Convert.ToInt32(reader["system_user_id"]);
-                                User_ID = Convert.ToInt32(reader["User_ID"]);
+                                SystemUserId = reader.IsDBNull(reader.GetOrdinal("system_user_id"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["system_user_id"]);
+                                User_ID = reader.IsDBNull(reader.GetOrdinal("User_ID"))
+                                    ? 0
+                                    : Convert.ToInt32(reader["User_ID"]);
                                 Password = reader["Password"].ToString();
-                                Permission = Convert.ToInt32(reader["Permission"]);
-                                isActive = Convert.ToBoolean(reader["isActive"]);
+                                //Permission = reader.IsDBNull(reader.GetOrdinal("Permission"))
+                                //    ? null
+                                //    : Convert.ToInt32(reader["Permission"]);
+                                isActive = reader.IsDBNull(reader.GetOrdinal("isActive"))
+                                    ? false
+                                    : Convert.ToBoolean(reader["isActive"]);
                                 found = true;
                             }
                         }

@@ -136,6 +136,7 @@
             chagePasswordToolStripMenuItem.Name = "chagePasswordToolStripMenuItem";
             chagePasswordToolStripMenuItem.Size = new Size(222, 48);
             chagePasswordToolStripMenuItem.Text = "change password";
+            chagePasswordToolStripMenuItem.Click += chagePasswordToolStripMenuItem_Click;
             // 
             // toolStripSeparator5
             // 

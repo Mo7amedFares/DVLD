@@ -62,7 +62,7 @@ namespace DVLD_Persntation
             lblAddress.Text = "???";
             lblSSN.Text = "???";
             lblGendor.Text = "???";
-            PbImage.Image = DVLD_Persntation.Properties.Resources.default_profile_picture;
+            PbImage.Image = DVLD_Persntation.Properties.Resources.user;
         }
 
         public void loadData(UserService userService)

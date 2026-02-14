@@ -68,5 +68,11 @@ namespace DVLD
             ChangePasswordSystemUserForm changePasswordForm = new ChangePasswordSystemUserForm(curentLonginSystemUser.System_User_Id);
             changePasswordForm.ShowDialog();
         }
+
+        private void applicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplicationTypesForm applicationTypesForm = new ApplicationTypesForm();
+            applicationTypesForm.ShowDialog();
+        }
     }
 }

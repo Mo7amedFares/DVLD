@@ -30,22 +30,6 @@ namespace DVLD_Persntation
             fillUsersDataGridView();
         }
 
-        //private void showPersonToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    SystemUserInfoForm systemUserInfoForm = new SystemUserInfoForm(Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["System_User_id"].Value));
-        //    systemUserInfoForm.ShowDialog();
-        //}
-
-
-
-
-
-        //private void BtnAddNewUser_Click(object sender, EventArgs e)
-        //{
-        //    NewOrUpdateUserForm newUserForm = new NewOrUpdateUserForm(-1);
-        //    newUserForm.ShowDialog();
-        //    fillUsersDataGridView();
-        //}
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
@@ -62,25 +46,13 @@ namespace DVLD_Persntation
             dataGridViewUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        //private void editToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    NewOrUpdateUserForm updateUserForm = new NewOrUpdateUserForm(Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["User_ID"].Value));
-        //    updateUserForm.ShowDialog();
-        //    fillUsersDataGridView();
-        //}
-
+ 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SystemUserService.Delete(Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["System_User_ID"].Value));
             fillUsersDataGridView();
         }
 
-        //private void addPeopleToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    NewOrUpdateUserForm newUserForm = new NewOrUpdateUserForm(-1);
-        //    newUserForm.ShowDialog();
-        //    fillUsersDataGridView();
-        //}
 
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -202,6 +202,8 @@
             Controls.Add(label5);
             Controls.Add(lblAddOrUpdateSystemUser);
             Controls.Add(uS_SystemUserInfo1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ChangePasswordSystemUserForm";
             Text = "ChangePasswordSystemUserForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();

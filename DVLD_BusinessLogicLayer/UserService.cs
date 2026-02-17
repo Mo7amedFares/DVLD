@@ -161,6 +161,11 @@ namespace DVLD_BusinessLogicLayer
             return null;
         }
 
+        public static DataTable GetNationalities()
+        {
+            return DVLD_DataAccessLayer.UserRepository.GetNationalities();
+        }
+
         private bool UpdateUser()
         {
             return DVLD_DataAccessLayer.UserRepository.UpdateUser(this.User_ID, this.First_Name, this.Second_Name, this.Third_Name, this.Last_Name, this.Date_Of_Birth, this.Age, this.Email, this.Phone, this.Nationality, this.Address, this.Profile_Photo_URL, this.Gender, this.SSN);

@@ -42,10 +42,10 @@
             toolStripSeparator1 = new ToolStripSeparator();
             editToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
+            changePasswordToolStripMenuItem = new ToolStripMenuItem();
             addPeopleToolStripMenuItem = new ToolStripMenuItem();
             label3 = new Label();
             CbIsActive = new ComboBox();
-            changePasswordToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -128,7 +128,7 @@
             contextMenuStrip1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showPersonToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, changePasswordToolStripMenuItem, addPeopleToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(184, 142);
+            contextMenuStrip1.Size = new Size(184, 120);
             // 
             // showPersonToolStripMenuItem
             // 
@@ -158,6 +158,14 @@
             deleteToolStripMenuItem.Size = new Size(183, 22);
             deleteToolStripMenuItem.Text = "delete";
             // 
+            // changePasswordToolStripMenuItem
+            // 
+            changePasswordToolStripMenuItem.Image = Properties.Resources.reset_password1;
+            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            changePasswordToolStripMenuItem.Size = new Size(183, 22);
+            changePasswordToolStripMenuItem.Text = "Change Password";
+            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
+            // 
             // addPeopleToolStripMenuItem
             // 
             addPeopleToolStripMenuItem.Image = Properties.Resources.add_user;
@@ -185,14 +193,6 @@
             CbIsActive.Visible = false;
             CbIsActive.SelectedIndexChanged += CbIsActive_SelectedIndexChanged;
             // 
-            // changePasswordToolStripMenuItem
-            // 
-            changePasswordToolStripMenuItem.Image = Properties.Resources.reset_password1;
-            changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            changePasswordToolStripMenuItem.Size = new Size(183, 22);
-            changePasswordToolStripMenuItem.Text = "Change Password";
-            changePasswordToolStripMenuItem.Click += changePasswordToolStripMenuItem_Click;
-            // 
             // MangeSystemUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -207,6 +207,8 @@
             Controls.Add(label1);
             Controls.Add(CPoxFilterBy);
             Controls.Add(dataGridViewUsers);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "MangeSystemUser";
             Text = "MangeSystemUser";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

@@ -1,6 +1,6 @@
 ﻿namespace DVLD_Persntation
 {
-    partial class ApplicationTypesForm
+    partial class MangeTestTypesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationTypesForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MangeTestTypesForm));
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            dataGridViewApplicationTypes = new DataGridView();
+            dataGridViewTestTypes = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
             toolStripSeparator1 = new ToolStripSeparator();
             editToolStripMenuItem = new ToolStripMenuItem();
             refrechToolStripMenuItem = new ToolStripMenuItem();
             btnCloase = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewApplicationTypes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTestTypes).BeginInit();
             contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,37 +47,37 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(286, 129);
+            label2.Location = new Point(324, 137);
             label2.Name = "label2";
-            label2.Size = new Size(233, 25);
-            label2.TabIndex = 29;
-            label2.Text = "Mange Applicatioin Types";
+            label2.Size = new Size(163, 25);
+            label2.TabIndex = 36;
+            label2.Text = "Mange Test Types";
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.deployment;
-            pictureBox1.Location = new Point(346, 12);
+            pictureBox1.Image = Properties.Resources.compliance;
+            pictureBox1.Location = new Point(346, 20);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(126, 114);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 28;
+            pictureBox1.TabIndex = 35;
             pictureBox1.TabStop = false;
             // 
-            // dataGridViewApplicationTypes
+            // dataGridViewTestTypes
             // 
-            dataGridViewApplicationTypes.AllowUserToAddRows = false;
-            dataGridViewApplicationTypes.AllowUserToDeleteRows = false;
-            dataGridViewApplicationTypes.AllowUserToOrderColumns = true;
-            dataGridViewApplicationTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewApplicationTypes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            dataGridViewApplicationTypes.ContextMenuStrip = contextMenuStrip1;
-            dataGridViewApplicationTypes.EditMode = DataGridViewEditMode.EditProgrammatically;
-            dataGridViewApplicationTypes.Location = new Point(0, 185);
-            dataGridViewApplicationTypes.Name = "dataGridViewApplicationTypes";
-            dataGridViewApplicationTypes.ReadOnly = true;
-            dataGridViewApplicationTypes.Size = new Size(833, 347);
-            dataGridViewApplicationTypes.TabIndex = 23;
-            dataGridViewApplicationTypes.ColumnHeaderMouseClick += dataGridViewApplicationTypes_ColumnHeaderMouseClick;
+            dataGridViewTestTypes.AllowUserToAddRows = false;
+            dataGridViewTestTypes.AllowUserToDeleteRows = false;
+            dataGridViewTestTypes.AllowUserToOrderColumns = true;
+            dataGridViewTestTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewTestTypes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridViewTestTypes.ContextMenuStrip = contextMenuStrip1;
+            dataGridViewTestTypes.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dataGridViewTestTypes.Location = new Point(0, 193);
+            dataGridViewTestTypes.Name = "dataGridViewTestTypes";
+            dataGridViewTestTypes.ReadOnly = true;
+            dataGridViewTestTypes.Size = new Size(833, 347);
+            dataGridViewTestTypes.TabIndex = 34;
+            dataGridViewTestTypes.CellMouseDoubleClick += dataGridViewTestTypes_CellMouseDoubleClick;
             // 
             // contextMenuStrip1
             // 
@@ -112,29 +112,31 @@
             btnCloase.FlatStyle = FlatStyle.Popup;
             btnCloase.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCloase.ImageAlign = ContentAlignment.MiddleRight;
-            btnCloase.Location = new Point(730, 538);
+            btnCloase.Location = new Point(730, 546);
             btnCloase.Name = "btnCloase";
             btnCloase.Size = new Size(90, 37);
-            btnCloase.TabIndex = 33;
+            btnCloase.TabIndex = 37;
             btnCloase.Text = "Close";
             btnCloase.UseVisualStyleBackColor = true;
             btnCloase.Click += btnCloase_Click;
             // 
-            // ApplicationTypesForm
+            // MangeTestTypesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(832, 582);
-            Controls.Add(btnCloase);
+            ClientSize = new Size(833, 590);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
-            Controls.Add(dataGridViewApplicationTypes);
+            Controls.Add(dataGridViewTestTypes);
+            Controls.Add(btnCloase);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
-            Name = "ApplicationTypesForm";
-            Text = "ApplicationTypesForm";
+            Name = "MangeTestTypesForm";
+            Text = "MangeTestTypes";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewApplicationTypes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTestTypes).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -144,11 +146,11 @@
 
         private Label label2;
         private PictureBox pictureBox1;
-        private DataGridView dataGridViewApplicationTypes;
+        private DataGridView dataGridViewTestTypes;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem editToolStripMenuItem;
-        private Button btnCloase;
         private ToolStripMenuItem refrechToolStripMenuItem;
+        private Button btnCloase;
     }
 }

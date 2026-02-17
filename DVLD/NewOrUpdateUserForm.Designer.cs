@@ -69,11 +69,10 @@
             // 
             // userControl11
             // 
-            userControl11.Location = new Point(1, 98);
+            userControl11.Location = new Point(4, 99);
             userControl11.Name = "userControl11";
-            userControl11.Size = new Size(916, 374);
+            userControl11.Size = new Size(916, 370);
             userControl11.TabIndex = 50;
-            userControl11.Load += userControl11_Load;
             // 
             // NewOrUpdateUserForm
             // 
@@ -84,6 +83,8 @@
             Controls.Add(lblPersonId);
             Controls.Add(label5);
             Controls.Add(lblAddOrNewUser);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "NewOrUpdateUserForm";
             Text = "NewOrUpdateUser";
             ResumeLayout(false);

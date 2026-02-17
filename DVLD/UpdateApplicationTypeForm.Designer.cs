@@ -189,6 +189,9 @@
             Controls.Add(pictureBox3);
             Controls.Add(label5);
             Controls.Add(lblAddOrUpdateSystemUser);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "UpdateApplicationTypeForm";
             Text = "UpdateApplicationTypeForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

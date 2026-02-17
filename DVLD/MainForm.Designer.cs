@@ -30,6 +30,9 @@
         {
             toolStrip1 = new ToolStrip();
             toolStripSeparator2 = new ToolStripSeparator();
+            toolStripButton1 = new ToolStripDropDownButton();
+            applicationTypesToolStripMenuItem = new ToolStripMenuItem();
+            mangeTestTypesToolStripMenuItem = new ToolStripMenuItem();
             TSBtnPeople = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             toolStripButton3 = new ToolStripButton();
@@ -42,8 +45,6 @@
             toolStripSeparator5 = new ToolStripSeparator();
             sigToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
-            toolStripButton1 = new ToolStripDropDownButton();
-            applicationTypesToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -64,6 +65,31 @@
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 49);
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { applicationTypesToolStripMenuItem, mangeTestTypesToolStripMenuItem });
+            toolStripButton1.Image = DVLD_Persntation.Properties.Resources.Applications_Icon;
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(152, 46);
+            toolStripButton1.Text = "Applications ";
+            // 
+            // applicationTypesToolStripMenuItem
+            // 
+            applicationTypesToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.deployment;
+            applicationTypesToolStripMenuItem.Name = "applicationTypesToolStripMenuItem";
+            applicationTypesToolStripMenuItem.Size = new Size(224, 48);
+            applicationTypesToolStripMenuItem.Text = "Application Types";
+            applicationTypesToolStripMenuItem.Click += applicationTypesToolStripMenuItem_Click;
+            // 
+            // mangeTestTypesToolStripMenuItem
+            // 
+            mangeTestTypesToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.compliance;
+            mangeTestTypesToolStripMenuItem.Name = "mangeTestTypesToolStripMenuItem";
+            mangeTestTypesToolStripMenuItem.Size = new Size(224, 48);
+            mangeTestTypesToolStripMenuItem.Text = "Mange Test Types";
+            mangeTestTypesToolStripMenuItem.Click += mangeTestTypesToolStripMenuItem_Click;
             // 
             // TSBtnPeople
             // 
@@ -155,23 +181,6 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // toolStripButton1
-            // 
-            toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { applicationTypesToolStripMenuItem });
-            toolStripButton1.Image = DVLD_Persntation.Properties.Resources.Applications_Icon;
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(152, 46);
-            toolStripButton1.Text = "Applications ";
-            // 
-            // applicationTypesToolStripMenuItem
-            // 
-            applicationTypesToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.deployment;
-            applicationTypesToolStripMenuItem.Name = "applicationTypesToolStripMenuItem";
-            applicationTypesToolStripMenuItem.Size = new Size(224, 48);
-            applicationTypesToolStripMenuItem.Text = "Application Types";
-            applicationTypesToolStripMenuItem.Click += applicationTypesToolStripMenuItem_Click;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -207,5 +216,6 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripDropDownButton toolStripButton1;
         private ToolStripMenuItem applicationTypesToolStripMenuItem;
+        private ToolStripMenuItem mangeTestTypesToolStripMenuItem;
     }
 }

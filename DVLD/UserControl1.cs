@@ -9,6 +9,7 @@ namespace DVLD_Persntation
         public UserControl1()
         {
             InitializeComponent();
+            tbNationality.DataSource = UserService.GetNationalities();
         }
         private int userId = -1;
         public void LoadData(int userId)
@@ -133,7 +134,9 @@ namespace DVLD_Persntation
 
         private void lkRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PbImage.Image = Properties.Resources.user;
+            PbImage.Image = null;
+            PbImage.Image.Dispose();
+
             PbImage.ImageLocation = "";
         }
     }

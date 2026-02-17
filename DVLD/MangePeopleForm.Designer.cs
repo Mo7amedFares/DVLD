@@ -177,6 +177,8 @@
             Controls.Add(label1);
             Controls.Add(CPoxFilterBy);
             Controls.Add(dataGridViewUsers);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "MangePeopleForm";
             Text = "MangePeople";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

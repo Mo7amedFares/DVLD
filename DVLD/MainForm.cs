@@ -54,8 +54,7 @@ namespace DVLD
 
         private void curentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SystemUserInfoForm systemUserInfoForm = new SystemUserInfoForm(curentLonginSystemUser.System_User_Id);
-            systemUserInfoForm.ShowDialog();
+            openChildForm(new SystemUserInfoForm(curentLonginSystemUser.System_User_Id));
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -65,14 +64,17 @@ namespace DVLD
 
         private void chagePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePasswordSystemUserForm changePasswordForm = new ChangePasswordSystemUserForm(curentLonginSystemUser.System_User_Id);
-            changePasswordForm.ShowDialog();
+            openChildForm(new ChangePasswordSystemUserForm(curentLonginSystemUser.System_User_Id));
         }
 
         private void applicationTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ApplicationTypesForm applicationTypesForm = new ApplicationTypesForm();
-            applicationTypesForm.ShowDialog();
+            openChildForm(new ApplicationTypesForm());
+        }
+
+        private void mangeTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new MangeTestTypesForm());
         }
     }
 }

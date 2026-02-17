@@ -113,6 +113,16 @@ namespace DVLD_Persntation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap compliance {
+            get {
+                object obj = ResourceManager.GetObject("compliance", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cycle {
             get {
                 object obj = ResourceManager.GetObject("cycle", resourceCulture);

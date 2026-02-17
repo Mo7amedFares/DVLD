@@ -59,6 +59,8 @@
             ClientSize = new Size(817, 335);
             Controls.Add(uC_PersonInfomation1);
             Controls.Add(lblAddOrNewUser);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "PersonInfoForm";
             Text = "PersonInfoForm";
             ResumeLayout(false);

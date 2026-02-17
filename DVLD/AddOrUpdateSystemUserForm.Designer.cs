@@ -380,6 +380,8 @@
             Controls.Add(btnCloase);
             Controls.Add(lblAddOrUpdateSystemUser);
             Controls.Add(tabControl1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AddOrUpdateSystemUserForm";
             Text = "AddNewSystemUserForm";
             tabControl1.ResumeLayout(false);

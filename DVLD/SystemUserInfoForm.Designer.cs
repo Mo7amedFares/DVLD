@@ -57,6 +57,8 @@
             ClientSize = new Size(820, 443);
             Controls.Add(lblAddOrNewUser);
             Controls.Add(uS_SystemUserInfo1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "SystemUserInfoForm";
             Text = "SystemUserInfoForm";
             ResumeLayout(false);

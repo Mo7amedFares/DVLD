@@ -242,6 +242,13 @@ namespace DVLD_DataAccessLayer
             return found;
         }
 
+        public static DataTable GetNationalities()
+        {
+            DataTable dt = new DataTable();
+            dt = DBHelper.ExecuteSelectQuery("SELECT DISTINCT * FROM [dbo].[Countries]");
+            return dt;
+        }
+
         public static bool UpdateUser(int userId, string firstName, string secondName, string thirdName, string lastName, DateTime dateOfBirth, int age, string email, string phone, string nationality, string address, string profilePhotoURL, char gender, string ssn)
         {
             try

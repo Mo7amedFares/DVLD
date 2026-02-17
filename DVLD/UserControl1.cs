@@ -9,7 +9,8 @@ namespace DVLD_Persntation
         public UserControl1()
         {
             InitializeComponent();
-            tbNationality.DataSource = UserService.GetNationalities();
+            tbNationality.Items.AddRange(UserService.GetNaltionalities().ToArray());
+            tbNationality.SelectedItem = "Egypt";
         }
         private int userId = -1;
         public void LoadData(int userId)

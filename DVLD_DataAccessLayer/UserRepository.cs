@@ -242,11 +242,34 @@ namespace DVLD_DataAccessLayer
             return found;
         }
 
-        public static DataTable GetNationalities()
+        public static List<string> GetNationalities()
         {
-            DataTable dt = new DataTable();
-            dt = DBHelper.ExecuteSelectQuery("SELECT DISTINCT * FROM [dbo].[Countries]");
-            return dt;
+            List<string> nationalities = new List<string>();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("select CountryName from [dbo].[Countries]", con))
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                nationalities.Add(reader["CountryName"].ToString());
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                throw;
+            }
+            return nationalities;
+
         }
 
         public static bool UpdateUser(int userId, string firstName, string secondName, string thirdName, string lastName, DateTime dateOfBirth, int age, string email, string phone, string nationality, string address, string profilePhotoURL, char gender, string ssn)

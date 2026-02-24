@@ -8,7 +8,7 @@ namespace DVLD
         public static Form? currentChildForm;
         private Panel contentHostPanel;
         //private int systemUserID;
-        private SystemUserService curentLonginSystemUser;
+        public static SystemUserService curentLonginSystemUser;
         public MainForm(string username)
         {
             curentLonginSystemUser = SystemUserService.GetSystemUserByUserName(username);
@@ -75,6 +75,17 @@ namespace DVLD
         private void mangeTestTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openChildForm(new MangeTestTypesForm());
+        }
+
+        private void localDrivaingLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openChildForm(new LocalDrivingLicenseApplicationForm());
+        }
+         
+        private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddOrUpdateLocalDrivingLicenseForm addForm = new AddOrUpdateLocalDrivingLicenseForm(-1);
+            openChildForm(addForm);
         }
     }
 }

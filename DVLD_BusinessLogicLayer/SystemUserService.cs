@@ -68,6 +68,19 @@ namespace DVLD_BusinessLogicLayer
             }
             return null;
         }
+        public static SystemUserService GetSystemUserByUserId(int userId)
+        {
+            int system_User_Id = 0;
+            string username = string.Empty;
+            string password = string.Empty;
+            //int? permission = 0;
+            bool isActive = false;
+            if (DVLD_DataAccessLayer.SystemUserRepository.GetSystemUserByUserId(userId, ref system_User_Id, ref username, ref password, /*ref permission,*/ ref isActive))
+            {
+                return new SystemUserService(system_User_Id, userId, username, password, /*permission,*/ isActive);
+            }
+            return null;
+        }
         public static SystemUserService GetSystemUserByUserName(string username)
         {
             int system_User_Id = 0;
@@ -89,6 +102,12 @@ namespace DVLD_BusinessLogicLayer
         public static bool Delete(int System_User_Id)
         {
             return DVLD_DataAccessLayer.SystemUserRepository.DeleteSystemUser(System_User_Id);
+        }
+
+
+        public static bool isExistByUserId(int userId)
+        {
+            return DVLD_DataAccessLayer.SystemUserRepository.IsExistByUserId(userId);
         }
 
         public bool Update()

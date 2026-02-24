@@ -146,7 +146,7 @@
             cbRememperMe.Name = "cbRememperMe";
             cbRememperMe.Size = new Size(101, 19);
             cbRememperMe.TabIndex = 10;
-            cbRememperMe.Text = "Rememper Me";
+            cbRememperMe.Text = "Remember Me";
             cbRememperMe.UseVisualStyleBackColor = true;
             cbRememperMe.CheckedChanged += checkBox1_CheckedChanged;
             // 

@@ -18,6 +18,7 @@ namespace DVLD_Persntation
         {
 
             InitializeComponent();
+            uC_SearchPeoble1.DataBackEvent += Uc_SearchPeoble1_DataBackEvent;
             tbPassword.UseSystemPasswordChar = true;
             tbConfirmPassword.UseSystemPasswordChar = true;
             tbPassword.PasswordChar = '*';
@@ -32,7 +33,6 @@ namespace DVLD_Persntation
             else
                 tabPage2.Enabled = false;
 
-            CPoxFilterBy.SelectedIndex = 0;
 
         }
 
@@ -40,7 +40,7 @@ namespace DVLD_Persntation
         {
             lblAddOrUpdateSystemUser.Text = "Update System User";
             lblSystemUserId.Text = systemUserID.ToString();
-            uC_PersonInfomation1.loadData(DVLD_BusinessLogicLayer.UserService.GetUserById(personID));
+            uC_SearchPeoble1.LoadData(systemUser.User_ID);
             tabPage1.Enabled = false;
             tabPage2.Enabled = true;
             tbUserName.Text = systemUser.Username;
@@ -52,97 +52,14 @@ namespace DVLD_Persntation
             tabControl1.SelectedTab = tabPage2;
         }
 
-        private void CPoxFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        private void Uc_SearchPeoble1_DataBackEvent(object sender, int id)
         {
-            if (CPoxFilterBy.SelectedItem == null)
-            {
-                tbTextFiltter.Visible = false;
-                button1.Visible = false;
-            }
-            else
-            {
-                tbTextFiltter.Visible = true;
-                button1.Visible = true;
-            }
+            personID = id;
         }
 
-        private void tbTextFiltter_TextChanged(object sender, EventArgs e)
+        private bool IsAlredyHaveSystemUser(int userId)
         {
-            if (string.IsNullOrWhiteSpace(tbTextFiltter.Text))
-            {
-                return;
-            }
-            if (CPoxFilterBy.SelectedItem.ToString() == "User_ID")
-            {
-                if (!int.TryParse(tbTextFiltter.Text, out int userId))
-                {
-                    tbTextFiltter.Text = tbTextFiltter.Text.Remove(tbTextFiltter.Text.Length - 1);
-                }
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // امسح الأخطاء القديمة
-            errorProvider1.Clear();
-
-            if (string.IsNullOrWhiteSpace(tbTextFiltter.Text))
-            {
-                errorProvider1.SetError(tbTextFiltter, "This field is required.");
-                return;
-            }
-
-            if (CPoxFilterBy.SelectedItem.ToString() == "User_ID" &&
-                !int.TryParse(tbTextFiltter.Text, out _))
-            {
-                errorProvider1.SetError(tbTextFiltter, "Please enter a valid number.");
-                return;
-            }
-
-            UserService user = null;
-
-            switch (CPoxFilterBy.SelectedItem.ToString())
-            {
-                case "User_ID":
-                    user = DVLD_BusinessLogicLayer.UserService.GetUserById(Convert.ToInt32(tbTextFiltter.Text));
-                    break;
-                case "SSN":
-                    user = DVLD_BusinessLogicLayer.UserService.GetUserBySSN(tbTextFiltter.Text);
-                    break;
-                case "Email":
-                    user = DVLD_BusinessLogicLayer.UserService.GetUserByEmail(tbTextFiltter.Text);
-                    break;
-                case "Phone":
-                    user = DVLD_BusinessLogicLayer.UserService.GetUserByPhone(tbTextFiltter.Text);
-                    break;
-            }
-
-            if (user == null)
-            {
-                errorProvider1.SetError(tbTextFiltter, "User not found.");
-                personID = -1;
-            }
-            else
-            {
-                errorProvider1.SetError(tbTextFiltter, ""); // امسح الخطأ
-                personID = user.User_ID;
-            }
-
-            uC_PersonInfomation1.loadData(user);
-        }
-
-
-        private void BtnAddNewUser_Click(object sender, EventArgs e)
-        {
-            NewOrUpdateUserForm newOrUpdateUserForm = new NewOrUpdateUserForm(-1);
-            newOrUpdateUserForm.DataBackEvent += NewOrUpdateUserForm_DataBackEvent;
-            newOrUpdateUserForm.ShowDialog();
-        }
-
-        private void NewOrUpdateUserForm_DataBackEvent(object sender, int id)
-        {
-            tbTextFiltter.Text = id.ToString();
-            button1_Click(this, EventArgs.Empty); // إعادة تحميل البيانات بعد إضافة مستخدم جديد
+            return SystemUserService.isExistByUserId(userId);
         }
 
         private void btnNextPage_Click(object sender, EventArgs e)
@@ -151,6 +68,14 @@ namespace DVLD_Persntation
             {
                 tabPage2.Enabled = true;
                 tabControl1.SelectedTab = tabPage2;
+                if(IsAlredyHaveSystemUser(personID))
+                {
+                    MessageBox.Show("This user already has a system user account. You can only update the existing account.", "User Already Has System Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    systemUser = SystemUserService.GetSystemUserByUserId(personID);
+                    systemUserID = systemUser.System_User_Id;
+                    LoadUserData();
+                }
+
             }
             else
             {

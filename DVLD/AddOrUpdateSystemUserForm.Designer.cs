@@ -32,13 +32,6 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             btnNextPage = new Button();
-            groupBox1 = new GroupBox();
-            button1 = new Button();
-            BtnAddNewUser = new Button();
-            tbTextFiltter = new TextBox();
-            label1 = new Label();
-            CPoxFilterBy = new ComboBox();
-            uC_PersonInfomation1 = new UC_PersonInfomation();
             tabPage2 = new TabPage();
             cbIsActive = new CheckBox();
             lblSystemUserId = new Label();
@@ -57,9 +50,9 @@
             btnCloase = new Button();
             btnSave = new Button();
             errorProvider1 = new ErrorProvider(components);
+            uC_SearchPeoble1 = new UC_SearchPeoble();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -75,18 +68,17 @@
             tabControl1.Location = new Point(1, 50);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(825, 452);
+            tabControl1.Size = new Size(832, 452);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(uC_SearchPeoble1);
             tabPage1.Controls.Add(btnNextPage);
-            tabPage1.Controls.Add(groupBox1);
-            tabPage1.Controls.Add(uC_PersonInfomation1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(817, 424);
+            tabPage1.Size = new Size(824, 424);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Personal Info";
             tabPage1.UseVisualStyleBackColor = true;
@@ -103,81 +95,6 @@
             btnNextPage.Text = "Next";
             btnNextPage.UseVisualStyleBackColor = true;
             btnNextPage.Click += btnNextPage_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(BtnAddNewUser);
-            groupBox1.Controls.Add(tbTextFiltter);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(CPoxFilterBy);
-            groupBox1.Location = new Point(7, 6);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(804, 81);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Seach Person";
-            // 
-            // button1
-            // 
-            button1.BackgroundImage = Properties.Resources.search_profile;
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Location = new Point(519, 27);
-            button1.Name = "button1";
-            button1.Size = new Size(35, 36);
-            button1.TabIndex = 15;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // BtnAddNewUser
-            // 
-            BtnAddNewUser.BackgroundImage = Properties.Resources.add_user;
-            BtnAddNewUser.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnAddNewUser.FlatStyle = FlatStyle.Popup;
-            BtnAddNewUser.Location = new Point(573, 27);
-            BtnAddNewUser.Name = "BtnAddNewUser";
-            BtnAddNewUser.Size = new Size(41, 36);
-            BtnAddNewUser.TabIndex = 14;
-            BtnAddNewUser.UseVisualStyleBackColor = true;
-            BtnAddNewUser.Click += BtnAddNewUser_Click;
-            // 
-            // tbTextFiltter
-            // 
-            tbTextFiltter.Location = new Point(299, 35);
-            tbTextFiltter.Name = "tbTextFiltter";
-            tbTextFiltter.Size = new Size(190, 23);
-            tbTextFiltter.TabIndex = 13;
-            tbTextFiltter.TextChanged += tbTextFiltter_TextChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(6, 34);
-            label1.Name = "label1";
-            label1.Size = new Size(66, 20);
-            label1.TabIndex = 12;
-            label1.Text = "Filter by";
-            // 
-            // CPoxFilterBy
-            // 
-            CPoxFilterBy.FormattingEnabled = true;
-            CPoxFilterBy.Items.AddRange(new object[] { "User_ID", "SSN", "Email", "Phone" });
-            CPoxFilterBy.Location = new Point(91, 35);
-            CPoxFilterBy.Name = "CPoxFilterBy";
-            CPoxFilterBy.Size = new Size(178, 23);
-            CPoxFilterBy.TabIndex = 11;
-            CPoxFilterBy.SelectedIndexChanged += CPoxFilterBy_SelectedIndexChanged;
-            // 
-            // uC_PersonInfomation1
-            // 
-            uC_PersonInfomation1.AccessibleName = "";
-            uC_PersonInfomation1.BorderStyle = BorderStyle.FixedSingle;
-            uC_PersonInfomation1.Location = new Point(3, 93);
-            uC_PersonInfomation1.Name = "uC_PersonInfomation1";
-            uC_PersonInfomation1.Size = new Size(811, 263);
-            uC_PersonInfomation1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -371,11 +288,18 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // uC_SearchPeoble1
+            // 
+            uC_SearchPeoble1.Location = new Point(3, 3);
+            uC_SearchPeoble1.Name = "uC_SearchPeoble1";
+            uC_SearchPeoble1.Size = new Size(817, 356);
+            uC_SearchPeoble1.TabIndex = 15;
+            // 
             // AddOrUpdateSystemUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(823, 553);
+            ClientSize = new Size(831, 553);
             Controls.Add(btnSave);
             Controls.Add(btnCloase);
             Controls.Add(lblAddOrUpdateSystemUser);
@@ -386,8 +310,6 @@
             Text = "AddNewSystemUserForm";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -404,13 +326,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private UC_PersonInfomation uC_PersonInfomation1;
-        private GroupBox groupBox1;
-        private TextBox tbTextFiltter;
-        private Label label1;
-        private ComboBox CPoxFilterBy;
-        private Button button1;
-        private Button BtnAddNewUser;
         private Label lblAddOrUpdateSystemUser;
         private TextBox tbPassword;
         private PictureBox pictureBox3;
@@ -429,5 +344,6 @@
         private Button btnSave;
         private Button btnNextPage;
         private ErrorProvider errorProvider1;
+        private UC_SearchPeoble uC_SearchPeoble1;
     }
 }

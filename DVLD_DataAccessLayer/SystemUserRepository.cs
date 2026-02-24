@@ -50,7 +50,7 @@ namespace DVLD_DataAccessLayer
                                 //Permission = reader.IsDBNull(reader.GetOrdinal("Permission"))
                                 //    ? null
                                 //    : Convert.ToInt32(reader["Permission"]);
-                                isActive = reader.IsDBNull(reader.GetOrdinal("isActive"));
+                                isActive = Convert.ToBoolean(reader["isActive"]);
                                 found = true;
                             }
                         }
@@ -89,7 +89,7 @@ namespace DVLD_DataAccessLayer
                                 //Permission = reader.IsDBNull(reader.GetOrdinal("Permission"))
                                 //    ? null
                                 //    : Convert.ToInt32(reader["Permission"]);
-                                isActive = reader.IsDBNull(reader.GetOrdinal("isActive"));
+                                isActive = Convert.ToBoolean(reader["isActive"]);
                                 found = true;
                             }
                         }
@@ -252,9 +252,7 @@ namespace DVLD_DataAccessLayer
                                 //Permission = reader.IsDBNull(reader.GetOrdinal("Permission"))
                                 //    ? null
                                 //    : Convert.ToInt32(reader["Permission"]);
-                                isActive = reader.IsDBNull(reader.GetOrdinal("isActive"))
-                                    ? false
-                                    : Convert.ToBoolean(reader["isActive"]);
+                                isActive = Convert.ToBoolean(reader["isActive"]);
                                 found = true;
                             }
                         }
@@ -293,6 +291,11 @@ namespace DVLD_DataAccessLayer
                 // Log the error or handle it appropriately
                 throw;
             }
+        }
+
+        public static bool IsExistByUserId(int userId)
+        {
+            return DBHelper.IsExist("SystemUsers", "User_ID", userId);
         }
 
         public static bool ChangePassword(int SystemUserId, string newPassword)

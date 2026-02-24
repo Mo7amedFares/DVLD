@@ -33,6 +33,12 @@
             toolStripButton1 = new ToolStripDropDownButton();
             applicationTypesToolStripMenuItem = new ToolStripMenuItem();
             mangeTestTypesToolStripMenuItem = new ToolStripMenuItem();
+            mangeApplecationToolStripMenuItem = new ToolStripMenuItem();
+            localDrivaingLicenseApplicationToolStripMenuItem = new ToolStripMenuItem();
+            intarnationalDrivaingLicenseApplicationToolStripMenuItem = new ToolStripMenuItem();
+            drivingToolStripMenuItem = new ToolStripMenuItem();
+            newDrivingLicenseToolStripMenuItem = new ToolStripMenuItem();
+            localDrivingLicenseToolStripMenuItem = new ToolStripMenuItem();
             TSBtnPeople = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             toolStripButton3 = new ToolStripButton();
@@ -68,7 +74,7 @@
             // 
             // toolStripButton1
             // 
-            toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { applicationTypesToolStripMenuItem, mangeTestTypesToolStripMenuItem });
+            toolStripButton1.DropDownItems.AddRange(new ToolStripItem[] { drivingToolStripMenuItem, applicationTypesToolStripMenuItem, mangeTestTypesToolStripMenuItem, mangeApplecationToolStripMenuItem });
             toolStripButton1.Image = DVLD_Persntation.Properties.Resources.Applications_Icon;
             toolStripButton1.ImageTransparentColor = Color.Magenta;
             toolStripButton1.Name = "toolStripButton1";
@@ -79,7 +85,7 @@
             // 
             applicationTypesToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.deployment;
             applicationTypesToolStripMenuItem.Name = "applicationTypesToolStripMenuItem";
-            applicationTypesToolStripMenuItem.Size = new Size(224, 48);
+            applicationTypesToolStripMenuItem.Size = new Size(258, 48);
             applicationTypesToolStripMenuItem.Text = "Application Types";
             applicationTypesToolStripMenuItem.Click += applicationTypesToolStripMenuItem_Click;
             // 
@@ -87,9 +93,55 @@
             // 
             mangeTestTypesToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.compliance;
             mangeTestTypesToolStripMenuItem.Name = "mangeTestTypesToolStripMenuItem";
-            mangeTestTypesToolStripMenuItem.Size = new Size(224, 48);
+            mangeTestTypesToolStripMenuItem.Size = new Size(258, 48);
             mangeTestTypesToolStripMenuItem.Text = "Mange Test Types";
             mangeTestTypesToolStripMenuItem.Click += mangeTestTypesToolStripMenuItem_Click;
+            // 
+            // mangeApplecationToolStripMenuItem
+            // 
+            mangeApplecationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { localDrivaingLicenseApplicationToolStripMenuItem, intarnationalDrivaingLicenseApplicationToolStripMenuItem });
+            mangeApplecationToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.mange;
+            mangeApplecationToolStripMenuItem.Name = "mangeApplecationToolStripMenuItem";
+            mangeApplecationToolStripMenuItem.Size = new Size(258, 48);
+            mangeApplecationToolStripMenuItem.Text = "Mange Applecation";
+            // 
+            // localDrivaingLicenseApplicationToolStripMenuItem
+            // 
+            localDrivaingLicenseApplicationToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.LocalLecens;
+            localDrivaingLicenseApplicationToolStripMenuItem.Name = "localDrivaingLicenseApplicationToolStripMenuItem";
+            localDrivaingLicenseApplicationToolStripMenuItem.Size = new Size(390, 48);
+            localDrivaingLicenseApplicationToolStripMenuItem.Text = "Local Drivaing License Application";
+            localDrivaingLicenseApplicationToolStripMenuItem.Click += localDrivaingLicenseApplicationToolStripMenuItem_Click;
+            // 
+            // intarnationalDrivaingLicenseApplicationToolStripMenuItem
+            // 
+            intarnationalDrivaingLicenseApplicationToolStripMenuItem.Name = "intarnationalDrivaingLicenseApplicationToolStripMenuItem";
+            intarnationalDrivaingLicenseApplicationToolStripMenuItem.Size = new Size(390, 48);
+            intarnationalDrivaingLicenseApplicationToolStripMenuItem.Text = "Intarnational Drivaing License Application";
+            // 
+            // drivingToolStripMenuItem
+            // 
+            drivingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newDrivingLicenseToolStripMenuItem });
+            drivingToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.driving_license__1_;
+            drivingToolStripMenuItem.Name = "drivingToolStripMenuItem";
+            drivingToolStripMenuItem.Size = new Size(258, 48);
+            drivingToolStripMenuItem.Text = "Driving License Sirvice";
+            // 
+            // newDrivingLicenseToolStripMenuItem
+            // 
+            newDrivingLicenseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { localDrivingLicenseToolStripMenuItem });
+            newDrivingLicenseToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.Add_Car_license1;
+            newDrivingLicenseToolStripMenuItem.Name = "newDrivingLicenseToolStripMenuItem";
+            newDrivingLicenseToolStripMenuItem.Size = new Size(243, 48);
+            newDrivingLicenseToolStripMenuItem.Text = "New Driving License";
+            // 
+            // localDrivingLicenseToolStripMenuItem
+            // 
+            localDrivingLicenseToolStripMenuItem.Image = DVLD_Persntation.Properties.Resources.LocalLecens;
+            localDrivingLicenseToolStripMenuItem.Name = "localDrivingLicenseToolStripMenuItem";
+            localDrivingLicenseToolStripMenuItem.Size = new Size(247, 48);
+            localDrivingLicenseToolStripMenuItem.Text = "Local Driving License";
+            localDrivingLicenseToolStripMenuItem.Click += localDrivingLicenseToolStripMenuItem_Click;
             // 
             // TSBtnPeople
             // 
@@ -217,5 +269,11 @@
         private ToolStripDropDownButton toolStripButton1;
         private ToolStripMenuItem applicationTypesToolStripMenuItem;
         private ToolStripMenuItem mangeTestTypesToolStripMenuItem;
+        private ToolStripMenuItem mangeApplecationToolStripMenuItem;
+        private ToolStripMenuItem localDrivaingLicenseApplicationToolStripMenuItem;
+        private ToolStripMenuItem intarnationalDrivaingLicenseApplicationToolStripMenuItem;
+        private ToolStripMenuItem drivingToolStripMenuItem;
+        private ToolStripMenuItem newDrivingLicenseToolStripMenuItem;
+        private ToolStripMenuItem localDrivingLicenseToolStripMenuItem;
     }
 }

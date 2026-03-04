@@ -105,7 +105,36 @@ namespace DVLD_DataAccessLayer
             }
             return false;
         }
-
+        public static bool GetUsernameById(int ID, ref string username)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_GetUsernameById", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", ID);
+                        SqlParameter outputParam = new SqlParameter("@Username", SqlDbType.NVarChar, 255)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        username = outputParam.Value.ToString();
+                        return !string.IsNullOrEmpty(username);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                throw;
+            }
+            return false;
+        }
         public static bool GetRememberedCredentials(ref string username, ref string password)
         {
             try

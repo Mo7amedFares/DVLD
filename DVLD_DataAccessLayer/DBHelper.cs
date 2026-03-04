@@ -276,6 +276,7 @@ namespace DVLD_DataAccessLayer
                             adapter.Fill(dt);
                         }
                     }
+                    conn.Close();
                 }
             }
             catch (Exception ex)

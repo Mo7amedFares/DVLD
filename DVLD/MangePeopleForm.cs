@@ -16,7 +16,6 @@ namespace DVLD
             InitializeComponent();
             AddItemsToFilterByComboBox();
             fillUsersDataGridView();
-            dataGridViewUsers.ColumnHeaderMouseClick += DataGridViewUsers_ColumnHeaderMouseClick;
 
         }
 
@@ -154,27 +153,7 @@ namespace DVLD
             }
         }
 
-        private void DataGridViewUsers_ColumnHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (usersTable == null || e.ColumnIndex < 0)
-                return;
 
-            string columnName = dataGridViewUsers.Columns[e.ColumnIndex].DataPropertyName;
-
-            if (string.Equals(currentSortColumn, columnName, StringComparison.OrdinalIgnoreCase))
-            {
-                currentSortDirection = currentSortDirection == ListSortDirection.Ascending
-                    ? ListSortDirection.Descending
-                    : ListSortDirection.Ascending;
-            }
-            else
-            {
-                currentSortColumn = columnName;
-                currentSortDirection = ListSortDirection.Ascending;
-            }
-
-            usersTable.DefaultView.Sort = $"{columnName} {(currentSortDirection == ListSortDirection.Ascending ? "ASC" : "DESC")}";
-        }
 
     }
 }

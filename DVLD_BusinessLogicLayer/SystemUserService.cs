@@ -94,7 +94,15 @@ namespace DVLD_BusinessLogicLayer
             }
             return null;
         }
-
+        public static string GetUsernameById(int ID)
+        {
+            string username = string.Empty;
+            if (DVLD_DataAccessLayer.SystemUserRepository.GetUsernameById(ID, ref username))
+            {
+                return username;
+            }
+            return null;
+        }
         public static bool GetRememberedCredentials(ref string username, ref string password)
         {
             return DVLD_DataAccessLayer.SystemUserRepository.GetRememberedCredentials(ref username, ref password);

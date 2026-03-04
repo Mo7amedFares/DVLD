@@ -12,15 +12,16 @@ namespace DVLD_Persntation
 {
     public partial class AddOrUpdateLocalDrivingLicenseForm : Form
     {
-        int Request_ID = -1;
+        int Local_Driving_License_Id = -1;
         int Person_ID = -1;
 
         DVLD_BusinessLogicLayer.LocalDrivingLicenseService localDrivingLicenseService;
         DVLD_BusinessLogicLayer.ApplicationTypesService applicationTypesService = new();
-        public AddOrUpdateLocalDrivingLicenseForm(int Request_ID)
+
+        public AddOrUpdateLocalDrivingLicenseForm(int Local_Driving_License_Id)
         {
             InitializeComponent();
-            this.Request_ID = Request_ID;
+            this.Local_Driving_License_Id = Local_Driving_License_Id;
             uC_SearchPeoble1.DataBackEvent += (object sender, int id) => Person_ID = id;
             LoadForm();
         }
@@ -28,7 +29,7 @@ namespace DVLD_Persntation
         void loadLicenseClasses()
         {
             DataTable dt = DVLD_BusinessLogicLayer.LicenseClassService.GetAllIdAndNameLicenseClasses();
-            cmbLicenseClass.DisplayMember = "License_Class_Name";
+            cmbLicenseClass.DisplayMember = "LicenseClassName";
             cmbLicenseClass.ValueMember = "License_Class_ID";
             cmbLicenseClass.DataSource = dt;
         }
@@ -37,10 +38,10 @@ namespace DVLD_Persntation
 
         void LoadRequestData()
         {
-            if (Request_ID != -1)
+            if (Local_Driving_License_Id >0)
             {
-                localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Request_ID);
-                if (localDrivingLicenseService!= null)
+                localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Local_Driving_License_Id);
+                if (localDrivingLicenseService != null)
                 {
                     lblAddOrUpdateSystemUser.Text = "Update Local Driving License Request";
                     lblApplicationID.Text = localDrivingLicenseService.Request_id.ToString();
@@ -48,8 +49,9 @@ namespace DVLD_Persntation
                     uC_SearchPeoble1.LoadData(Person_ID);
                     cmbLicenseClass.SelectedValue = localDrivingLicenseService.License_Class_ID;
                     lblApplicationDate.Text = localDrivingLicenseService.Date.ToShortDateString();
+                    lblLastStatusDate.Text = localDrivingLicenseService.LastStatusDate.ToShortDateString();
                     lblApplicationFees.Text = localDrivingLicenseService.PaidFees.ToString("C");
-                    lblCreatedBy.Text = SystemUserService.GetSystemUserById( localDrivingLicenseService.created_by_system_user).Username;
+                    lblCreatedBy.Text = SystemUserService.GetUsernameById(localDrivingLicenseService.created_by_system_user);
                     tabPage1.Enabled = false; // Disable editing for existing requests
 
                 }
@@ -61,9 +63,12 @@ namespace DVLD_Persntation
             }
             else
             {
+                tabPage2.Enabled = false;
+                btnSave.Enabled = false;
                 lblCreatedBy.Text = MainForm.curentLonginSystemUser.Username;
                 lblApplicationDate.Text = DateTime.Now.ToShortDateString();
-                
+                lblLastStatusDate.Text = DateTime.Now.ToShortDateString();
+
                 applicationTypesService.GetApplicationTypeById(1); // Assuming 1 is the ID for local driving license application
                 cmbLicenseClass.SelectedIndex = 0; // Set default license class
                 lblApplicationFees.Text = applicationTypesService.Fees.ToString("C");
@@ -76,7 +81,7 @@ namespace DVLD_Persntation
             LoadRequestData();
         }
 
-       
+
         private void btnNextPage_Click(object sender, EventArgs e)
         {
             if (Person_ID == -1)
@@ -84,9 +89,10 @@ namespace DVLD_Persntation
                 MessageBox.Show("Please select a person before proceeding.");
                 return;
             }
+            tabPage2.Enabled = true;
+            btnSave.Enabled = true;
             tabLocalLicense.SelectedTab = tabPage2;
-            
-            LoadForm();
+
             tabPage1.Enabled = false;
 
         }
@@ -98,10 +104,10 @@ namespace DVLD_Persntation
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(Request_ID == -1)
+            if (Local_Driving_License_Id == -1)
             {
-                localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(null, Person_ID, DateTime.Now, DVLD_BusinessLogicLayer.RequestService.enState.New, MainForm.curentLonginSystemUser.User_ID, applicationTypesService.Fees , Convert.ToInt32(cmbLicenseClass.SelectedValue));
-                if(localDrivingLicenseService.isAlreadyHaveSameClassLicense())
+                localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(null, Person_ID, DateTime.Now, DateTime.Now, DVLD_BusinessLogicLayer.RequestService.enState.New, MainForm.curentLonginSystemUser.User_ID, applicationTypesService.Fees, Convert.ToInt32(cmbLicenseClass.SelectedValue));
+                if (localDrivingLicenseService.isAlreadyHaveSameClassLicense())
                 {
                     MessageBox.Show("The person already has a license of the same class. Cannot submit duplicate request.", "Duplicate License", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -110,7 +116,7 @@ namespace DVLD_Persntation
                 if (localDrivingLicenseService.Save())
                 {
                     MessageBox.Show("Local Driving License request added successfully.");
-                    this.Request_ID = localDrivingLicenseService.Request_id; // Get the generated Request_ID
+                    this.Local_Driving_License_Id = localDrivingLicenseService.Local_Driving_License_Id; // Get the generated Local_Driving_License_Id
                     LoadForm();
                 }
                 else
@@ -120,7 +126,7 @@ namespace DVLD_Persntation
             }
             else
             {
-                localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Request_ID, null , Person_ID, DateTime.Now, DVLD_BusinessLogicLayer.RequestService.enState.New, MainForm.curentLonginSystemUser.User_ID, applicationTypesService.Fees, Convert.ToInt32(cmbLicenseClass.SelectedValue));
+                localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Local_Driving_License_Id, null, Person_ID, DateTime.Now, DateTime.Now, DVLD_BusinessLogicLayer.RequestService.enState.New, MainForm.curentLonginSystemUser.User_ID, applicationTypesService.Fees, Convert.ToInt32(cmbLicenseClass.SelectedValue));
                 if (localDrivingLicenseService.isAlreadyHaveSameClassLicense())
                 {
                     MessageBox.Show("The person already has a license of the same class. Cannot submit duplicate request.", "Duplicate License", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -136,6 +142,11 @@ namespace DVLD_Persntation
                     MessageBox.Show("Failed to update Local Driving License request.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

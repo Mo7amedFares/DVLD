@@ -37,7 +37,7 @@
         private void UserControl11_DataBackEvent(object sender, int id)
         {
             loadNewOrUpdateUserForm(id);
-            DataBackEvent.Invoke(this, id);
+            if(DataBackEvent != null)DataBackEvent.Invoke(this, id);
         }
 
         private void userControl11_Load(object sender, EventArgs e)

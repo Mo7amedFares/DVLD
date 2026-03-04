@@ -18,5 +18,9 @@ namespace DVLD_BusinessLogicLayer
         {
             return DVLD_DataAccessLayer.LicenseClassRepository.GetAllIdAndName();
         }
+        public static string GetClassNameByID(int License_Class_ID)
+        {
+            return DVLD_DataAccessLayer.LicenseClassRepository.GetClassNameByID(License_Class_ID);
+        }
     }
 }

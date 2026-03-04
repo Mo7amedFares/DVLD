@@ -162,6 +162,11 @@ namespace DVLD_BusinessLogicLayer
             return null;
         }
 
+        public static string GetUserFullNameByID(int UserID)
+        {
+            return DVLD_DataAccessLayer.UserRepository.GetUserFullNameByID(UserID);
+        }
+
         public static List<string> GetNaltionalities()
         {
             return UserRepository.GetNationalities();

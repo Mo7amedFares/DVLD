@@ -12,11 +12,19 @@ namespace DVLD_DataAccessLayer
             string storedProc = "sp_GetAllRequestsLocalDriverLicense";
             return DBHelper.ExecuteSelectCommand(storedProc, CommandType.StoredProcedure);
         }
-        public static DataTable GetRequestLocalDrivingLicenseByID(int Request_ID)
+        public static DataTable GetRequestLocalDriverLicenseByRequestID(int Request_ID)
         {
-            string storedProc = "sp_GetRequestLocalDriverLicenseByID";
+            string storedProc = "sp_GetRequestLocalDriverLicenseByRequestID";
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@Request_ID", Request_ID);
+            return DBHelper.ExecutePramterizedSelectCommand(storedProc, CommandType.StoredProcedure, parameters);
+        }
+
+        public static DataTable GetLocalDrivingLicenseByID(int Local_Driving_License_Id)
+        {
+            string storedProc = "sp_GetLocalDrivingLicenseByID";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@Local_Driving_License_Id", Local_Driving_License_Id);
             return DBHelper.ExecutePramterizedSelectCommand(storedProc, CommandType.StoredProcedure, parameters);
         }
         public static int AddLocalDrivingLicense(int Request_id, int License_Class_ID)

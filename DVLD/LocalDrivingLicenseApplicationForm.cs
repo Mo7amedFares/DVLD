@@ -21,10 +21,10 @@ namespace DVLD_Persntation
         void LoadCPoxFilter()
         {
             CPoxFilterBy.Items.Add("None");
-            CPoxFilterBy.Items.Add("Request_id");
-            CPoxFilterBy.Items.Add("user_id");
+            CPoxFilterBy.Items.Add("Local_Driving_License_Id");
+            CPoxFilterBy.Items.Add("SSN");
+            CPoxFilterBy.Items.Add("Full Name");
             CPoxFilterBy.Items.Add("StateName");
-            CPoxFilterBy.Items.Add("Name");
             CPoxFilterBy.SelectedIndex = 0;
             CPoxFilterBy_SelectedIndexChanged(null, null);
 
@@ -79,19 +79,20 @@ namespace DVLD_Persntation
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddOrUpdateLocalDrivingLicenseForm editForm = new AddOrUpdateLocalDrivingLicenseForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Request_ID"].Value));
+            AddOrUpdateLocalDrivingLicenseForm editForm = new AddOrUpdateLocalDrivingLicenseForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
             editForm.ShowDialog();
         }
 
         private void tbTextFiltter_TextChanged(object sender, EventArgs e)
         {
-            if(CPoxFilterBy.SelectedItem == null || CPoxFilterBy.SelectedItem.ToString() == "None")
+            errorProvider1.SetError(tbTextFiltter, string.Empty);
+            if (tbTextFiltter.Text == string.Empty || CPoxFilterBy.SelectedItem.ToString() == "None")
             {
                 LoadWithFilter("1=1");
                 return;
             }
 
-            if (CPoxFilterBy.SelectedItem == "Request_id" || CPoxFilterBy.SelectedItem == "user_id")
+            if (CPoxFilterBy.SelectedItem == "Local_Driving_License_Id")
             {
                 if (!int.TryParse(tbTextFiltter.Text, out _))
                 {
@@ -124,19 +125,23 @@ namespace DVLD_Persntation
 
         private void refrechToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        
+
             refrechToolStripMenuItem_Click(null, null);
 
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DVLD_BusinessLogicLayer.LocalDrivingLicenseService localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Request_ID"].Value));
+            DVLD_BusinessLogicLayer.LocalDrivingLicenseService localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
             localDrivingLicenseService.State = (int)DVLD_BusinessLogicLayer.RequestService.enState.cancelled;
             localDrivingLicenseService.ChangeRequestState();
-            refrechToolStripMenuItem_Click(null , null);
+            refrechToolStripMenuItem_Click(null, null);
         }
 
-     
+        private void sechduleVistionTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VistionTestAppointmentForm vistionTestAppointmentForm = new VistionTestAppointmentForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
+            vistionTestAppointmentForm.ShowDialog();
+        }
     }
 }

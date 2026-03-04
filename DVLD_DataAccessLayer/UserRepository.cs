@@ -272,6 +272,35 @@ namespace DVLD_DataAccessLayer
 
         }
 
+        public  static string GetUserFullNameByID(int userId)
+        {
+            string fullName = string.Empty;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("GetUserFullNameByID", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@User_ID", userId);
+                        con.Open();
+                        object result = cmd.ExecuteScalar();
+                        con.Close();
+                        if (result != null)
+                        {
+                            fullName = result.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                throw;
+            }
+            return fullName;
+        }
+
         public static bool UpdateUser(int userId, string firstName, string secondName, string thirdName, string lastName, DateTime dateOfBirth, int age, string email, string phone, string nationality, string address, string profilePhotoURL, char gender, string ssn)
         {
             try

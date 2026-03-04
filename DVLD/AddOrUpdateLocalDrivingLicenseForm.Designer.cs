@@ -52,6 +52,10 @@
             lblApplicationFees = new Label();
             lblApplicationDate = new Label();
             tabLocalLicense = new TabControl();
+            lblLastStatusDate = new Label();
+            pictureBox6 = new PictureBox();
+            label6 = new Label();
+            uC_SearchPeoble1 = new UC_SearchPeoble();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -61,6 +65,7 @@
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             tabLocalLicense.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // errorProvider1
@@ -214,6 +219,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(uC_SearchPeoble1);
             tabPage1.Controls.Add(btnNextPage);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -225,6 +231,9 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(lblLastStatusDate);
+            tabPage2.Controls.Add(pictureBox6);
+            tabPage2.Controls.Add(label6);
             tabPage2.Controls.Add(cmbLicenseClass);
             tabPage2.Controls.Add(lblCreatedBy);
             tabPage2.Controls.Add(pictureBox5);
@@ -251,7 +260,7 @@
             // cmbLicenseClass
             // 
             cmbLicenseClass.FormattingEnabled = true;
-            cmbLicenseClass.Location = new Point(231, 150);
+            cmbLicenseClass.Location = new Point(231, 196);
             cmbLicenseClass.Name = "cmbLicenseClass";
             cmbLicenseClass.Size = new Size(293, 23);
             cmbLicenseClass.TabIndex = 29;
@@ -261,7 +270,7 @@
             lblCreatedBy.AutoSize = true;
             lblCreatedBy.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCreatedBy.ForeColor = Color.Black;
-            lblCreatedBy.Location = new Point(231, 250);
+            lblCreatedBy.Location = new Point(231, 303);
             lblCreatedBy.Name = "lblCreatedBy";
             lblCreatedBy.Size = new Size(31, 21);
             lblCreatedBy.TabIndex = 28;
@@ -270,7 +279,7 @@
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.magic_wand;
-            pictureBox5.Location = new Point(185, 250);
+            pictureBox5.Location = new Point(185, 303);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(21, 21);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -282,7 +291,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(26, 250);
+            label8.Location = new Point(26, 303);
             label8.Name = "label8";
             label8.Size = new Size(100, 21);
             label8.TabIndex = 26;
@@ -293,7 +302,7 @@
             lblApplicationFees.AutoSize = true;
             lblApplicationFees.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblApplicationFees.ForeColor = Color.Black;
-            lblApplicationFees.Location = new Point(231, 201);
+            lblApplicationFees.Location = new Point(231, 247);
             lblApplicationFees.Name = "lblApplicationFees";
             lblApplicationFees.Size = new Size(31, 21);
             lblApplicationFees.TabIndex = 25;
@@ -320,6 +329,45 @@
             tabLocalLicense.Size = new Size(832, 452);
             tabLocalLicense.TabIndex = 14;
             // 
+            // lblLastStatusDate
+            // 
+            lblLastStatusDate.AutoSize = true;
+            lblLastStatusDate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLastStatusDate.ForeColor = Color.Black;
+            lblLastStatusDate.Location = new Point(231, 152);
+            lblLastStatusDate.Name = "lblLastStatusDate";
+            lblLastStatusDate.Size = new Size(31, 21);
+            lblLastStatusDate.TabIndex = 32;
+            lblLastStatusDate.Text = "???";
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = Properties.Resources.calendar_clock;
+            pictureBox6.Location = new Point(185, 152);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(21, 21);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 31;
+            pictureBox6.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(26, 152);
+            label6.Name = "label6";
+            label6.Size = new Size(139, 21);
+            label6.TabIndex = 30;
+            label6.Text = "Last Status Date :";
+            // 
+            // uC_SearchPeoble1
+            // 
+            uC_SearchPeoble1.Location = new Point(4, 6);
+            uC_SearchPeoble1.Name = "uC_SearchPeoble1";
+            uC_SearchPeoble1.Size = new Size(817, 356);
+            uC_SearchPeoble1.TabIndex = 15;
+            // 
             // AddOrUpdateLocalDrivingLicenseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -341,6 +389,7 @@
             tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             tabLocalLicense.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -371,5 +420,8 @@
         private PictureBox pictureBox5;
         private Label label8;
         private ComboBox cmbLicenseClass;
+        private PictureBox pictureBox6;
+        private Label label6;
+        private Label lblLastStatusDate;
     }
 }

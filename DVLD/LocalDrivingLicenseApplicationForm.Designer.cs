@@ -44,6 +44,8 @@
             deleteToolStripMenuItem = new ToolStripMenuItem();
             addLocalDrivingLicenseToolStripMenuItem = new ToolStripMenuItem();
             refrechToolStripMenuItem = new ToolStripMenuItem();
+            sechdulToolStripMenuItem = new ToolStripMenuItem();
+            sechduleVistionTestToolStripMenuItem = new ToolStripMenuItem();
             pictureBox2 = new PictureBox();
             errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -129,9 +131,9 @@
             // contextMenuStrip1
             // 
             contextMenuStrip1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem, sechdulToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(233, 120);
+            contextMenuStrip1.Size = new Size(233, 164);
             // 
             // showLocalDrivingLiceseToolStripMenuItem
             // 
@@ -177,6 +179,22 @@
             refrechToolStripMenuItem.Size = new Size(232, 22);
             refrechToolStripMenuItem.Text = "Refresh";
             refrechToolStripMenuItem.Click += refrechToolStripMenuItem_Click;
+            // 
+            // sechdulToolStripMenuItem
+            // 
+            sechdulToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sechduleVistionTestToolStripMenuItem });
+            sechdulToolStripMenuItem.Image = Properties.Resources.exam_time;
+            sechdulToolStripMenuItem.Name = "sechdulToolStripMenuItem";
+            sechdulToolStripMenuItem.Size = new Size(232, 22);
+            sechdulToolStripMenuItem.Text = "sechdule Test";
+            // 
+            // sechduleVistionTestToolStripMenuItem
+            // 
+            sechduleVistionTestToolStripMenuItem.Image = Properties.Resources.eye;
+            sechduleVistionTestToolStripMenuItem.Name = "sechduleVistionTestToolStripMenuItem";
+            sechduleVistionTestToolStripMenuItem.Size = new Size(198, 22);
+            sechduleVistionTestToolStripMenuItem.Text = "Sechdule Vistion Test";
+            sechduleVistionTestToolStripMenuItem.Click += sechduleVistionTestToolStripMenuItem_Click;
             // 
             // pictureBox2
             // 
@@ -234,5 +252,7 @@
         private PictureBox pictureBox2;
         private ToolStripMenuItem refrechToolStripMenuItem;
         private ErrorProvider errorProvider1;
+        private ToolStripMenuItem sechdulToolStripMenuItem;
+        private ToolStripMenuItem sechduleVistionTestToolStripMenuItem;
     }
 }

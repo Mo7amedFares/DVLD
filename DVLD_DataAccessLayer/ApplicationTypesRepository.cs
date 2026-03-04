@@ -72,7 +72,7 @@ namespace DVLD_DataAccessLayer
                         {
                             if (reader.Read())
                             {
-                                name = reader["Name"].ToString();
+                                name = reader["RequestTypeName"].ToString();
                                 fees = Convert.ToDecimal(reader["Fees"]);
                                 return true;
                             }

@@ -11,22 +11,24 @@ namespace DVLD_BusinessLogicLayer
             cancelled = 2,
             Completed = 3
         };
-        private enState enstate;
+        public enState enstate;
         public int Request_ID { get; set; }
         public int? Base_Request_ID { get; set; }
         public int user_id { get; set; }
         public DateTime Date { get; set; }
+        public DateTime LastStatusDate { get; set; }
         public int State { get; set; }
         public int created_by_system_user { get; set; }
         public decimal PaidFees { get; set; }
         public int RequestTypeID { get; set; }
 
-        public RequestService(int? Base_Request_ID, int user_id, DateTime date, enState state, int created_by_system_user, decimal paidFees, int requestType)
+        public RequestService(int? Base_Request_ID, int user_id, DateTime date, DateTime lastStatusDate, enState state, int created_by_system_user, decimal paidFees, int requestType)
         {
             enstate = enState.New;
             this.Base_Request_ID = Base_Request_ID;
             this.user_id = user_id;
             this.Date = date;
+            this.LastStatusDate = lastStatusDate;
             this.State = (int)state;
             enstate = state;
             this.created_by_system_user = created_by_system_user;
@@ -38,8 +40,11 @@ namespace DVLD_BusinessLogicLayer
             this.Request_ID = Request_ID;
             LoadRequest();
         }
+        public RequestService()
+        {
+        }
 
-        private void LoadRequest()
+        protected void LoadRequest()
         {
             DataTable request = DVLD_DataAccessLayer.RequestRepository.GetRequestByID(this.Request_ID);
             if(request.Rows.Count > 0)
@@ -48,21 +53,23 @@ namespace DVLD_BusinessLogicLayer
                 this.Base_Request_ID = row["Base_Request_ID"] as int?;
                 this.user_id = (int)row["user_id"];
                 this.Date = (DateTime)row["Date"];
+                this.LastStatusDate = (DateTime)row["LastStatusDate"];
                 this.State = (int)row["State"];
                 enstate = (enState)this.State;
                 this.created_by_system_user = (int)row["created_by_system_user"];
                 this.PaidFees = (decimal)row["PaidFees"];
                 this.RequestTypeID = (int)row["RequestTypeID"];
+                
             }
         }
 
         protected int? AddRequest()
         {
-            return DVLD_DataAccessLayer.RequestRepository.AddRequest(this.Base_Request_ID, this.user_id, this.Date, this.State, this.created_by_system_user, this.PaidFees, this.RequestTypeID);
+            return DVLD_DataAccessLayer.RequestRepository.AddRequest(this.Base_Request_ID, this.user_id, this.Date,this.LastStatusDate, this.State, this.created_by_system_user, this.PaidFees, this.RequestTypeID);
         }
         protected bool UpdateRequest()
         {
-            return DVLD_DataAccessLayer.RequestRepository.UpdateRequest(this.user_id, this.Base_Request_ID, this.user_id, this.Date, this.State, this.created_by_system_user, this.PaidFees, this.RequestTypeID);
+            return DVLD_DataAccessLayer.RequestRepository.UpdateRequest(this.user_id, this.Base_Request_ID, this.user_id, this.Date,this.LastStatusDate, this.State, this.created_by_system_user, this.PaidFees, this.RequestTypeID);
 
         }
 

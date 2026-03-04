@@ -43,7 +43,6 @@
             pictureBox2 = new PictureBox();
             label5 = new Label();
             label3 = new Label();
-            uC_SearchPeoble1 = new UC_SearchPeoble();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
             cmbLicenseClass = new ComboBox();
@@ -119,7 +118,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = Properties.Resources.handFees;
-            pictureBox4.Location = new Point(185, 201);
+            pictureBox4.Location = new Point(185, 247);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(21, 21);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -131,7 +130,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(26, 201);
+            label4.Location = new Point(26, 247);
             label4.Name = "label4";
             label4.Size = new Size(144, 21);
             label4.TabIndex = 19;
@@ -174,7 +173,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.driving_license__1_;
-            pictureBox3.Location = new Point(185, 152);
+            pictureBox3.Location = new Point(185, 198);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(21, 21);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -196,7 +195,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(26, 152);
+            label5.Location = new Point(26, 198);
             label5.Name = "label5";
             label5.Size = new Size(116, 21);
             label5.TabIndex = 11;
@@ -213,16 +212,8 @@
             label3.TabIndex = 10;
             label3.Text = "Application ID :";
             // 
-            // uC_SearchPeoble1
-            // 
-            uC_SearchPeoble1.Location = new Point(3, 3);
-            uC_SearchPeoble1.Name = "uC_SearchPeoble1";
-            uC_SearchPeoble1.Size = new Size(817, 356);
-            uC_SearchPeoble1.TabIndex = 15;
-            // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(uC_SearchPeoble1);
             tabPage1.Controls.Add(btnNextPage);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";

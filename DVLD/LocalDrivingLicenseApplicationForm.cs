@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -126,7 +127,7 @@ namespace DVLD_Persntation
         private void refrechToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            refrechToolStripMenuItem_Click(null, null);
+            dataGridViewRequestLocalDrivaingLicense.DataSource = DVLD_BusinessLogicLayer.LocalDrivingLicenseService.GetAllRequestLocalDrivingLicense();
 
         }
 
@@ -140,8 +141,64 @@ namespace DVLD_Persntation
 
         private void sechduleVistionTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VistionTestAppointmentForm vistionTestAppointmentForm = new VistionTestAppointmentForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
+            TestAppointmentForm vistionTestAppointmentForm = new TestAppointmentForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value), 1);
             vistionTestAppointmentForm.ShowDialog();
+        }
+
+        private void sechduleWritingTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestAppointmentForm vistionTestAppointmentForm = new TestAppointmentForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value), 2);
+            vistionTestAppointmentForm.ShowDialog();
+        }
+
+        private void sechduleDrivingTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestAppointmentForm vistionTestAppointmentForm = new TestAppointmentForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value), 3);
+            vistionTestAppointmentForm.ShowDialog();
+        }
+
+        private void sechdulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (DVLD_BusinessLogicLayer.TestAppointmentService.GetCountOfTestAppointmentsByLicenseDriveID((Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value))))
+            {
+                case 0:
+                    sechduleDrivingTestToolStripMenuItem.Enabled = false;
+                    sechduleWritingTestToolStripMenuItem.Enabled = false;
+                    sechduleVistionTestToolStripMenuItem.Enabled = true;
+                    break;
+                case 1:
+                    sechduleDrivingTestToolStripMenuItem.Enabled = false;
+                    sechduleWritingTestToolStripMenuItem.Enabled = true;
+                    sechduleVistionTestToolStripMenuItem.Enabled = false;
+                    break;
+                case 2:
+                    sechduleDrivingTestToolStripMenuItem.Enabled = true;
+                    sechduleWritingTestToolStripMenuItem.Enabled = false;
+                    sechduleVistionTestToolStripMenuItem.Enabled = false;
+                    break;
+            }
+        }
+
+        private void sechdulToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
+        {
+            switch (DVLD_BusinessLogicLayer.TestAppointmentService.GetCountOfTestAppointmentsByLicenseDriveID((Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value))))
+            {
+                case 0:
+                    sechduleDrivingTestToolStripMenuItem.Enabled = false;
+                    sechduleWritingTestToolStripMenuItem.Enabled = false;
+                    sechduleVistionTestToolStripMenuItem.Enabled = true;
+                    break;
+                case 1:
+                    sechduleDrivingTestToolStripMenuItem.Enabled = false;
+                    sechduleWritingTestToolStripMenuItem.Enabled = true;
+                    sechduleVistionTestToolStripMenuItem.Enabled = false;
+                    break;
+                case 2:
+                    sechduleDrivingTestToolStripMenuItem.Enabled = true;
+                    sechduleWritingTestToolStripMenuItem.Enabled = false;
+                    sechduleVistionTestToolStripMenuItem.Enabled = false;
+                    break;
+            }
         }
     }
 }

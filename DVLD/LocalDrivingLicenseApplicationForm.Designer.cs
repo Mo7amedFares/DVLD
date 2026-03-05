@@ -46,6 +46,8 @@
             refrechToolStripMenuItem = new ToolStripMenuItem();
             sechdulToolStripMenuItem = new ToolStripMenuItem();
             sechduleVistionTestToolStripMenuItem = new ToolStripMenuItem();
+            sechduleWritingTestToolStripMenuItem = new ToolStripMenuItem();
+            sechduleDrivingTestToolStripMenuItem = new ToolStripMenuItem();
             pictureBox2 = new PictureBox();
             errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -133,7 +135,7 @@
             contextMenuStrip1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem, sechdulToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(233, 164);
+            contextMenuStrip1.Size = new Size(233, 142);
             // 
             // showLocalDrivingLiceseToolStripMenuItem
             // 
@@ -182,19 +184,37 @@
             // 
             // sechdulToolStripMenuItem
             // 
-            sechdulToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sechduleVistionTestToolStripMenuItem });
+            sechdulToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sechduleVistionTestToolStripMenuItem, sechduleWritingTestToolStripMenuItem, sechduleDrivingTestToolStripMenuItem });
             sechdulToolStripMenuItem.Image = Properties.Resources.exam_time;
             sechdulToolStripMenuItem.Name = "sechdulToolStripMenuItem";
             sechdulToolStripMenuItem.Size = new Size(232, 22);
             sechdulToolStripMenuItem.Text = "sechdule Test";
+            sechdulToolStripMenuItem.Click += sechdulToolStripMenuItem_Click;
+            sechdulToolStripMenuItem.MouseMove += sechdulToolStripMenuItem_MouseMove;
             // 
             // sechduleVistionTestToolStripMenuItem
             // 
             sechduleVistionTestToolStripMenuItem.Image = Properties.Resources.eye;
             sechduleVistionTestToolStripMenuItem.Name = "sechduleVistionTestToolStripMenuItem";
-            sechduleVistionTestToolStripMenuItem.Size = new Size(198, 22);
+            sechduleVistionTestToolStripMenuItem.Size = new Size(201, 22);
             sechduleVistionTestToolStripMenuItem.Text = "Sechdule Vistion Test";
             sechduleVistionTestToolStripMenuItem.Click += sechduleVistionTestToolStripMenuItem_Click;
+            // 
+            // sechduleWritingTestToolStripMenuItem
+            // 
+            sechduleWritingTestToolStripMenuItem.Image = Properties.Resources.vintage_writing;
+            sechduleWritingTestToolStripMenuItem.Name = "sechduleWritingTestToolStripMenuItem";
+            sechduleWritingTestToolStripMenuItem.Size = new Size(201, 22);
+            sechduleWritingTestToolStripMenuItem.Text = "Sechdule Writing Test";
+            sechduleWritingTestToolStripMenuItem.Click += sechduleWritingTestToolStripMenuItem_Click;
+            // 
+            // sechduleDrivingTestToolStripMenuItem
+            // 
+            sechduleDrivingTestToolStripMenuItem.Image = Properties.Resources.driving_test;
+            sechduleDrivingTestToolStripMenuItem.Name = "sechduleDrivingTestToolStripMenuItem";
+            sechduleDrivingTestToolStripMenuItem.Size = new Size(201, 22);
+            sechduleDrivingTestToolStripMenuItem.Text = "Sechdule Driving Test";
+            sechduleDrivingTestToolStripMenuItem.Click += sechduleDrivingTestToolStripMenuItem_Click;
             // 
             // pictureBox2
             // 
@@ -254,5 +274,7 @@
         private ErrorProvider errorProvider1;
         private ToolStripMenuItem sechdulToolStripMenuItem;
         private ToolStripMenuItem sechduleVistionTestToolStripMenuItem;
+        private ToolStripMenuItem sechduleWritingTestToolStripMenuItem;
+        private ToolStripMenuItem sechduleDrivingTestToolStripMenuItem;
     }
 }

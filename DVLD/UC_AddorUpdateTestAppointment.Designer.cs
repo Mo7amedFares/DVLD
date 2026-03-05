@@ -403,7 +403,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.eye;
+            pictureBox1.Image = Properties.Resources.eye1;
             pictureBox1.Location = new Point(192, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 85);

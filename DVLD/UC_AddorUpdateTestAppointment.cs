@@ -26,6 +26,7 @@ namespace DVLD_Persntation
             _TestTypeID = TestTypeID;
             _localTestAppointmentID = LocalTestAppointmentID;
             _CountTrial = CountTrial;
+            setImage();
             if (_localTestAppointmentID == -1)
             {
                 LoadAddData();
@@ -35,7 +36,26 @@ namespace DVLD_Persntation
                 LoadUpdateData();
             }
         }
-        private void LoadAddData()
+
+        void setImage()
+        {
+            if (_TestTypeID == 1)
+            {
+                pictureBox1.Image = Properties.Resources.eye;
+                groupBox1.Text = "Vision Test";
+            }
+            else if (_TestTypeID == 2)
+            {
+                pictureBox1.Image = Properties.Resources.vintage_writing;
+                groupBox1.Text = "Writing Test";
+            }
+            else
+            {
+                pictureBox1.Image = Properties.Resources.driving_test;
+                groupBox1.Text = "Driving Test";
+            }
+        }
+        private void   LoadAddData()
         {
             DataRow dataRow = DVLD_BusinessLogicLayer.TestAppointmentService.GetDateToAddTestAppointmentBy(_localDrivingLicenseID, _TestTypeID);
             if (dataRow != null)
@@ -43,12 +63,12 @@ namespace DVLD_Persntation
                 lblLicenseDriveAppID.Text = dataRow["Local_Driving_License_Id"].ToString();
                 lblFullName.Text = dataRow["FullName"].ToString();
                 lblLicenseClass.Text = dataRow["LicenseClassName"].ToString();
-                lblHederTest.Text = $"Add {dataRow["TestTypeName"].ToString()}";
+                //lblHederTest.Text = $"Add {dataRow["TestTypeName"].ToString()}";
                 lblFees.Text = dataRow["Fees"].ToString();
                 lblTotalFees.Text = lblFees.Text;
                 if (_CountTrial > 0)
                 {
-                    lblHederTest.Text = $"Add {dataRow["TestTypeName"].ToString()} - Trial {_CountTrial + 1}";
+                    //lblHederTest.Text = $"Add {dataRow["TestTypeName"].ToString()} - Trial {_CountTrial + 1}";
                     groupBox2.Visible = true;
                     lblRAppFees.Text = "5";
                     lblTotalFees.Text = (decimal.Parse(lblFees.Text) + decimal.Parse(lblRAppFees.Text)).ToString();
@@ -74,7 +94,7 @@ namespace DVLD_Persntation
                 lblTotalFees.Text = lblFees.Text;
                 if (_CountTrial > 1)
                 {
-                    lblHederTest.Text = $"Update {dataRow["TestTypeName"].ToString()}";
+                    //lblHederTest.Text = $"Update {dataRow["TestTypeName"].ToString()}";
                     groupBox2.Enabled = true;
                     decimal retestFee = 5m;
                     lblRAppFees.Text = retestFee.ToString();

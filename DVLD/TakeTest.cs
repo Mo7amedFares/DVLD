@@ -54,6 +54,7 @@ namespace DVLD_Persntation
             {
                 MessageBox.Show("Test result saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+                
             }
             else
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TakeTest));
             groupBox1 = new GroupBox();
             lblTest = new Label();
             pictureBox8 = new PictureBox();
@@ -104,7 +105,7 @@
             groupBox1.Size = new Size(485, 425);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Vistion Test";
+            groupBox1.Text = "Scheduled Test";
             // 
             // lblTest
             // 
@@ -330,7 +331,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.eye;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(192, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 85);

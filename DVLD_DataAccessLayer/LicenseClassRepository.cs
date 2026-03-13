@@ -18,5 +18,14 @@ namespace DVLD_DataAccessLayer
             object result = DBHelper.ExecutePramterizedScalar(storedProc, CommandType.StoredProcedure, parameters);
             return result != null ? result.ToString() : string.Empty;
         }
+
+        public static DataRow GetLicenseClassByID(int licenseClassID)
+        {
+            string storedProc = "sp_GetLicenseClassByID";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@License_Class_ID", licenseClassID);
+            DataTable dt = DBHelper.ExecuteSelectCommand(storedProc, CommandType.StoredProcedure, parameters);
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
     }
 }

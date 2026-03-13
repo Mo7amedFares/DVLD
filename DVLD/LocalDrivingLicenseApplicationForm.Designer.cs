@@ -48,6 +48,7 @@
             sechduleVistionTestToolStripMenuItem = new ToolStripMenuItem();
             sechduleWritingTestToolStripMenuItem = new ToolStripMenuItem();
             sechduleDrivingTestToolStripMenuItem = new ToolStripMenuItem();
+            issueLicenseToolStripMenuItem = new ToolStripMenuItem();
             pictureBox2 = new PictureBox();
             errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -132,29 +133,30 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem, sechdulToolStripMenuItem });
+            contextMenuStrip1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem, sechdulToolStripMenuItem, issueLicenseToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(233, 142);
+            contextMenuStrip1.Size = new Size(273, 186);
+            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
             // 
             // showLocalDrivingLiceseToolStripMenuItem
             // 
             showLocalDrivingLiceseToolStripMenuItem.Image = (Image)resources.GetObject("showLocalDrivingLiceseToolStripMenuItem.Image");
             showLocalDrivingLiceseToolStripMenuItem.Name = "showLocalDrivingLiceseToolStripMenuItem";
-            showLocalDrivingLiceseToolStripMenuItem.Size = new Size(232, 22);
+            showLocalDrivingLiceseToolStripMenuItem.Size = new Size(272, 22);
             showLocalDrivingLiceseToolStripMenuItem.Text = "Show Local Driving License";
             showLocalDrivingLiceseToolStripMenuItem.Click += showLocalDrivingLiceseToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(229, 6);
+            toolStripSeparator1.Size = new Size(269, 6);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Image = (Image)resources.GetObject("editToolStripMenuItem.Image");
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(232, 22);
+            editToolStripMenuItem.Size = new Size(272, 22);
             editToolStripMenuItem.Text = "Edit";
             editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
@@ -162,7 +164,7 @@
             // 
             deleteToolStripMenuItem.Image = (Image)resources.GetObject("deleteToolStripMenuItem.Image");
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(232, 22);
+            deleteToolStripMenuItem.Size = new Size(272, 22);
             deleteToolStripMenuItem.Text = "delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
@@ -170,7 +172,7 @@
             // 
             addLocalDrivingLicenseToolStripMenuItem.Image = Properties.Resources.Add_Car_license1;
             addLocalDrivingLicenseToolStripMenuItem.Name = "addLocalDrivingLicenseToolStripMenuItem";
-            addLocalDrivingLicenseToolStripMenuItem.Size = new Size(232, 22);
+            addLocalDrivingLicenseToolStripMenuItem.Size = new Size(272, 22);
             addLocalDrivingLicenseToolStripMenuItem.Text = "Add Local Driving License";
             addLocalDrivingLicenseToolStripMenuItem.Click += addLocalDrivingLicenseToolStripMenuItem_Click;
             // 
@@ -178,7 +180,7 @@
             // 
             refrechToolStripMenuItem.Image = Properties.Resources.cycle;
             refrechToolStripMenuItem.Name = "refrechToolStripMenuItem";
-            refrechToolStripMenuItem.Size = new Size(232, 22);
+            refrechToolStripMenuItem.Size = new Size(272, 22);
             refrechToolStripMenuItem.Text = "Refresh";
             refrechToolStripMenuItem.Click += refrechToolStripMenuItem_Click;
             // 
@@ -187,7 +189,7 @@
             sechdulToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sechduleVistionTestToolStripMenuItem, sechduleWritingTestToolStripMenuItem, sechduleDrivingTestToolStripMenuItem });
             sechdulToolStripMenuItem.Image = Properties.Resources.exam_time;
             sechdulToolStripMenuItem.Name = "sechdulToolStripMenuItem";
-            sechdulToolStripMenuItem.Size = new Size(232, 22);
+            sechdulToolStripMenuItem.Size = new Size(272, 22);
             sechdulToolStripMenuItem.Text = "sechdule Test";
             sechdulToolStripMenuItem.Click += sechdulToolStripMenuItem_Click;
             sechdulToolStripMenuItem.MouseMove += sechdulToolStripMenuItem_MouseMove;
@@ -196,7 +198,7 @@
             // 
             sechduleVistionTestToolStripMenuItem.Image = Properties.Resources.eye;
             sechduleVistionTestToolStripMenuItem.Name = "sechduleVistionTestToolStripMenuItem";
-            sechduleVistionTestToolStripMenuItem.Size = new Size(201, 22);
+            sechduleVistionTestToolStripMenuItem.Size = new Size(207, 22);
             sechduleVistionTestToolStripMenuItem.Text = "Sechdule Vistion Test";
             sechduleVistionTestToolStripMenuItem.Click += sechduleVistionTestToolStripMenuItem_Click;
             // 
@@ -204,7 +206,7 @@
             // 
             sechduleWritingTestToolStripMenuItem.Image = Properties.Resources.vintage_writing;
             sechduleWritingTestToolStripMenuItem.Name = "sechduleWritingTestToolStripMenuItem";
-            sechduleWritingTestToolStripMenuItem.Size = new Size(201, 22);
+            sechduleWritingTestToolStripMenuItem.Size = new Size(207, 22);
             sechduleWritingTestToolStripMenuItem.Text = "Sechdule Writing Test";
             sechduleWritingTestToolStripMenuItem.Click += sechduleWritingTestToolStripMenuItem_Click;
             // 
@@ -212,9 +214,17 @@
             // 
             sechduleDrivingTestToolStripMenuItem.Image = Properties.Resources.driving_test;
             sechduleDrivingTestToolStripMenuItem.Name = "sechduleDrivingTestToolStripMenuItem";
-            sechduleDrivingTestToolStripMenuItem.Size = new Size(201, 22);
+            sechduleDrivingTestToolStripMenuItem.Size = new Size(207, 22);
             sechduleDrivingTestToolStripMenuItem.Text = "Sechdule Driving Test";
             sechduleDrivingTestToolStripMenuItem.Click += sechduleDrivingTestToolStripMenuItem_Click;
+            // 
+            // issueLicenseToolStripMenuItem
+            // 
+            issueLicenseToolStripMenuItem.Image = Properties.Resources.driving_license__1_;
+            issueLicenseToolStripMenuItem.Name = "issueLicenseToolStripMenuItem";
+            issueLicenseToolStripMenuItem.Size = new Size(272, 22);
+            issueLicenseToolStripMenuItem.Text = "Issue Driving License (First Time)";
+            issueLicenseToolStripMenuItem.Click += issueLicenseToolStripMenuItem_Click;
             // 
             // pictureBox2
             // 
@@ -276,5 +286,6 @@
         private ToolStripMenuItem sechduleVistionTestToolStripMenuItem;
         private ToolStripMenuItem sechduleWritingTestToolStripMenuItem;
         private ToolStripMenuItem sechduleDrivingTestToolStripMenuItem;
+        private ToolStripMenuItem issueLicenseToolStripMenuItem;
     }
 }

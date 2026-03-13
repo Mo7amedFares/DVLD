@@ -84,7 +84,7 @@ namespace DVLD_DataAccessLayer
             catch (Exception ex)
             {
                 // Log or handle the exception as needed
-                throw new Exception("Error executing scalar query: " + ex.Message);
+                throw new Exception("Error executing scalar query: " + ex.Message); 
             }
             return result;
         }

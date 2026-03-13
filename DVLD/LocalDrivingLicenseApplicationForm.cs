@@ -200,5 +200,35 @@ namespace DVLD_Persntation
                     break;
             }
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (DVLD_BusinessLogicLayer.TestAppointmentService.GetCountOfTestAppointmentsByLicenseDriveID((Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value))) == 3)
+            {
+                sechdulToolStripMenuItem.Enabled = false;
+
+                if (LicenseService.ExistLicenseDriveBy(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value)))
+                {
+                    issueLicenseToolStripMenuItem.Enabled = false;
+                    showLocalDrivingLiceseToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    showLocalDrivingLiceseToolStripMenuItem.Enabled = false;
+                    issueLicenseToolStripMenuItem.Enabled = true;
+                }
+            }
+            else
+            {
+                sechdulToolStripMenuItem.Enabled = true;
+                issueLicenseToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void issueLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IssueDrivingLicenseForTheFirstTimeForm issueDrivingLicenseForTheFirstTimeForm = new(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
+            issueDrivingLicenseForTheFirstTimeForm.ShowDialog();
+        }
     }
 }

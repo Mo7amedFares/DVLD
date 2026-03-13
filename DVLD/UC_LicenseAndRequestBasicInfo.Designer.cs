@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             uS_ApplicationBaseInfo1 = new US_ApplicationBaseInfo();
             groupBox1 = new GroupBox();
             lblkShowLicenseInfo = new LinkLabel();
@@ -41,18 +40,10 @@
             lblLicenseDriveAppID = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            label2 = new Label();
-            BtnAddNewTestAppointment = new Button();
-            dataGridView1 = new DataGridView();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            takeTestToolStripMenuItem = new ToolStripMenuItem();
-            editTestToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // uS_ApplicationBaseInfo1
@@ -74,9 +65,9 @@
             groupBox1.Controls.Add(lblLicenseDriveAppID);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(0, 0);
+            groupBox1.Location = new Point(0, -1);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(640, 85);
+            groupBox1.Size = new Size(640, 86);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Driving License Application Info";
@@ -181,83 +172,20 @@
             label1.TabIndex = 36;
             label1.Text = "License Drive App ID:";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 284);
-            label2.Name = "label2";
-            label2.Size = new Size(114, 20);
-            label2.TabIndex = 24;
-            label2.Text = "Appointments:";
-            // 
-            // BtnAddNewTestAppointment
-            // 
-            BtnAddNewTestAppointment.BackgroundImage = Properties.Resources.add_event;
-            BtnAddNewTestAppointment.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnAddNewTestAppointment.FlatStyle = FlatStyle.Popup;
-            BtnAddNewTestAppointment.Location = new Point(598, 277);
-            BtnAddNewTestAppointment.Name = "BtnAddNewTestAppointment";
-            BtnAddNewTestAppointment.Size = new Size(37, 37);
-            BtnAddNewTestAppointment.TabIndex = 23;
-            BtnAddNewTestAppointment.UseVisualStyleBackColor = true;
-            BtnAddNewTestAppointment.Click += BtnAddNewTestAppointment_Click;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.ContextMenuStrip = contextMenuStrip1;
-            dataGridView1.Location = new Point(0, 320);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(648, 174);
-            dataGridView1.TabIndex = 22;
-            // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { takeTestToolStripMenuItem, editTestToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(121, 48);
-            // 
-            // takeTestToolStripMenuItem
-            // 
-            takeTestToolStripMenuItem.Name = "takeTestToolStripMenuItem";
-            takeTestToolStripMenuItem.Size = new Size(120, 22);
-            takeTestToolStripMenuItem.Text = "Take Test";
-            takeTestToolStripMenuItem.Click += takeTestToolStripMenuItem_Click;
-            // 
-            // editTestToolStripMenuItem
-            // 
-            editTestToolStripMenuItem.Name = "editTestToolStripMenuItem";
-            editTestToolStripMenuItem.Size = new Size(120, 22);
-            editTestToolStripMenuItem.Text = "Edit Test";
-            editTestToolStripMenuItem.Click += editTestToolStripMenuItem_Click;
-            // 
             // UC_LicenseAndRequestBasicInfo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label2);
-            Controls.Add(BtnAddNewTestAppointment);
-            Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
             Controls.Add(uS_ApplicationBaseInfo1);
             Name = "UC_LicenseAndRequestBasicInfo";
-            Size = new Size(648, 494);
+            Size = new Size(648, 281);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -274,11 +202,5 @@
         private PictureBox pictureBox1;
         private Label label1;
         private LinkLabel lblkShowLicenseInfo;
-        private Label label2;
-        private Button BtnAddNewTestAppointment;
-        private DataGridView dataGridView1;
-        private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem takeTestToolStripMenuItem;
-        private ToolStripMenuItem editTestToolStripMenuItem;
     }
 }

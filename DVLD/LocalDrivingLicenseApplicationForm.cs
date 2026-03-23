@@ -75,7 +75,8 @@ namespace DVLD_Persntation
 
         private void showLocalDrivingLiceseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DriverLicenseInfoForm driverLicenseInfoForm = new DriverLicenseInfoForm(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
+            driverLicenseInfoForm.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,15 +128,15 @@ namespace DVLD_Persntation
         private void refrechToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            dataGridViewRequestLocalDrivaingLicense.DataSource = DVLD_BusinessLogicLayer.LocalDrivingLicenseService.GetAllRequestLocalDrivingLicense();
+            LoadCPoxFilter();
 
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             DVLD_BusinessLogicLayer.LocalDrivingLicenseService localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
-            localDrivingLicenseService.State = (int)DVLD_BusinessLogicLayer.RequestService.enState.cancelled;
-            localDrivingLicenseService.ChangeRequestState();
+            
             refrechToolStripMenuItem_Click(null, null);
         }
 
@@ -211,6 +212,8 @@ namespace DVLD_Persntation
                 {
                     issueLicenseToolStripMenuItem.Enabled = false;
                     showLocalDrivingLiceseToolStripMenuItem.Enabled = true;
+                    deleteToolStripMenuItem.Enabled = false;
+                    editToolStripMenuItem.Enabled = false;
                 }
                 else
                 {
@@ -220,6 +223,7 @@ namespace DVLD_Persntation
             }
             else
             {
+                showLocalDrivingLiceseToolStripMenuItem.Enabled = false;
                 sechdulToolStripMenuItem.Enabled = true;
                 issueLicenseToolStripMenuItem.Enabled = false;
             }
@@ -229,6 +233,20 @@ namespace DVLD_Persntation
         {
             IssueDrivingLicenseForTheFirstTimeForm issueDrivingLicenseForTheFirstTimeForm = new(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
             issueDrivingLicenseForTheFirstTimeForm.ShowDialog();
+        }
+
+        private void showLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LicenseHistoryForm licenseHistoryForm = new LicenseHistoryForm(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["SSN"].Value.ToString(), 1);
+            licenseHistoryForm.ShowDialog();
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DVLD_BusinessLogicLayer.LocalDrivingLicenseService localDrivingLicenseService = new DVLD_BusinessLogicLayer.LocalDrivingLicenseService(Convert.ToInt32(dataGridViewRequestLocalDrivaingLicense.CurrentRow.Cells["Local_Driving_License_Id"].Value));
+            localDrivingLicenseService.State = (int)DVLD_BusinessLogicLayer.RequestService.enState.cancelled;
+            localDrivingLicenseService.ChangeRequestState();
+            refrechToolStripMenuItem_Click(null, null);
         }
     }
 }

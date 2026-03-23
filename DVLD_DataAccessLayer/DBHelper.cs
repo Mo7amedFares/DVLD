@@ -286,5 +286,35 @@ namespace DVLD_DataAccessLayer
             }
             return dt;
         }
+
+        public static object ExecuteScalar(string query, CommandType commandType, Dictionary<string, object> parameters)
+        {
+            object result = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.CommandType = commandType;
+                        foreach (var item in parameters)
+                        {
+                            var p = cmd.CreateParameter();
+                            p.ParameterName = item.Key;
+                            p.Value = item.Value ?? DBNull.Value;
+                            cmd.Parameters.Add(p);
+                        }
+                        // استخدمنا دالة ExecuteScalar عشان نجيب القيمة اللي راجعة
+                        result = cmd.ExecuteScalar(); 
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error executing scalar: " + ex.Message);
+            }
+            return result;
+        }
     }
 }

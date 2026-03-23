@@ -31,12 +31,12 @@
             components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             button1 = new Button();
-            BtnAddNewUser = new Button();
             tbTextFiltter = new TextBox();
             label1 = new Label();
-            CPoxFilterBy = new ComboBox();
             uC_PersonInfomation1 = new UC_PersonInfomation();
             errorProvider1 = new ErrorProvider(components);
+            BtnAddNewUser = new Button();
+            CPoxFilterBy = new ComboBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
@@ -67,18 +67,6 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // BtnAddNewUser
-            // 
-            BtnAddNewUser.BackgroundImage = Properties.Resources.add_user;
-            BtnAddNewUser.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnAddNewUser.FlatStyle = FlatStyle.Popup;
-            BtnAddNewUser.Location = new Point(588, 19);
-            BtnAddNewUser.Name = "BtnAddNewUser";
-            BtnAddNewUser.Size = new Size(41, 36);
-            BtnAddNewUser.TabIndex = 14;
-            BtnAddNewUser.UseVisualStyleBackColor = true;
-            BtnAddNewUser.Click += BtnAddNewUser_Click;
-            // 
             // tbTextFiltter
             // 
             tbTextFiltter.Location = new Point(314, 27);
@@ -97,16 +85,6 @@
             label1.TabIndex = 12;
             label1.Text = "Filter by";
             // 
-            // CPoxFilterBy
-            // 
-            CPoxFilterBy.FormattingEnabled = true;
-            CPoxFilterBy.Items.AddRange(new object[] { "User_ID", "SSN", "Email", "Phone" });
-            CPoxFilterBy.Location = new Point(106, 27);
-            CPoxFilterBy.Name = "CPoxFilterBy";
-            CPoxFilterBy.Size = new Size(178, 23);
-            CPoxFilterBy.TabIndex = 11;
-            CPoxFilterBy.SelectedIndexChanged += CPoxFilterBy_SelectedIndexChanged;
-            // 
             // uC_PersonInfomation1
             // 
             uC_PersonInfomation1.AccessibleName = "";
@@ -119,6 +97,28 @@
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
+            // 
+            // BtnAddNewUser
+            // 
+            BtnAddNewUser.BackgroundImage = Properties.Resources.add_user;
+            BtnAddNewUser.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnAddNewUser.FlatStyle = FlatStyle.Popup;
+            BtnAddNewUser.Location = new Point(588, 19);
+            BtnAddNewUser.Name = "BtnAddNewUser";
+            BtnAddNewUser.Size = new Size(41, 36);
+            BtnAddNewUser.TabIndex = 14;
+            BtnAddNewUser.UseVisualStyleBackColor = true;
+            BtnAddNewUser.Click += BtnAddNewUser_Click;
+            // 
+            // CPoxFilterBy
+            // 
+            CPoxFilterBy.FormattingEnabled = true;
+            CPoxFilterBy.Items.AddRange(new object[] { "User_ID", "SSN", "Email", "Phone" });
+            CPoxFilterBy.Location = new Point(106, 27);
+            CPoxFilterBy.Name = "CPoxFilterBy";
+            CPoxFilterBy.Size = new Size(178, 23);
+            CPoxFilterBy.TabIndex = 11;
+            CPoxFilterBy.SelectedIndexChanged += CPoxFilterBy_SelectedIndexChanged;
             // 
             // UC_SearchPeoble
             // 
@@ -137,11 +137,11 @@
         #endregion
         private GroupBox groupBox1;
         private Button button1;
-        private Button BtnAddNewUser;
         private TextBox tbTextFiltter;
         private Label label1;
-        private ComboBox CPoxFilterBy;
         private UC_PersonInfomation uC_PersonInfomation1;
         private ErrorProvider errorProvider1;
+        private Button BtnAddNewUser;
+        private ComboBox CPoxFilterBy;
     }
 }

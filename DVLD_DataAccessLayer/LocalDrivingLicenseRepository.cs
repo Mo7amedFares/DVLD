@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DVLD_DataAccessLayer
 {
-    public class LocalDrivingLicenseRepository:databaseconnection
+    public class LocalDrivingLicenseRepository : databaseconnection
     {
         public static DataTable GetAllRequestLocalDrivingLicense()
         {
@@ -33,7 +33,7 @@ namespace DVLD_DataAccessLayer
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@Request_id", Request_id);
             parameters.Add("@License_Class_ID", License_Class_ID);
-            return Convert.ToInt32( DBHelper.ExecutePramterizedScalar(storedProc, CommandType.StoredProcedure, parameters));
+            return Convert.ToInt32(DBHelper.ExecutePramterizedScalar(storedProc, CommandType.StoredProcedure, parameters));
         }
 
         public static bool UpdateLocalDrivingLicense(int Request_id, int License_Class_ID)
@@ -51,6 +51,14 @@ namespace DVLD_DataAccessLayer
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@user_id", user_id);
             return DBHelper.ExecutePramterizedSelectCommand(storedProc, CommandType.StoredProcedure, parameters);
+        }
+
+        public static bool DeleteLocalDrivingLicense(int Request_id)
+        {
+            string storedProc = "sp_DeleteLocalDrivingLicense";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@Request_id", Request_id);
+            return DBHelper.ExecuteParameterizedNonQuery(storedProc, CommandType.StoredProcedure, parameters) > 0;
         }
     }
 }

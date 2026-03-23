@@ -114,6 +114,11 @@ namespace DVLD_BusinessLogicLayer
             return rows.Length > 0;
         }
 
+        public static bool DeleteLocalDrivingLicense(int LocalDrivingLicense)
+        {
+            return DVLD_DataAccessLayer.LocalDrivingLicenseRepository.DeleteLocalDrivingLicense(LocalDrivingLicense);
+        }
+
         public bool Save()
         {
             if (AddOrUpdate == enAddOrUpdate.Add)

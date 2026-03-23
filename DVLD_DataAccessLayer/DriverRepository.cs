@@ -6,6 +6,12 @@ namespace DVLD_DataAccessLayer
 {
     public class DriverRepository : databaseconnection
     {
+
+        public static DataTable GetAllDrivers()
+        {
+            string storedProc = "sp_GetAllDrivers";
+            return DBHelper.ExecuteSelectCommand(storedProc, CommandType.StoredProcedure);
+        }
         public static int GetDriverIDByUserID(int userID)
         {
             string storedProc = "sp_IsDriverExistForUser";
@@ -46,5 +52,7 @@ namespace DVLD_DataAccessLayer
             };
             return DBHelper.ExecuteParameterizedNonQuery(storedProc, CommandType.StoredProcedure, parameters) > 0;
         }
+
+        
     }
 }

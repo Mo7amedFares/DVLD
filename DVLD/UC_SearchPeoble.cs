@@ -127,5 +127,9 @@ namespace DVLD_Persntation
             button1_Click(this, EventArgs.Empty); // إعادة تحميل البيانات بعد إضافة مستخدم جديد
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DVLD_Persntation
 {
-    partial class PersonInfoForm
+    partial class InterntionalDrivaingLicenseInfoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,65 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblAddOrNewUser = new Label();
-            uC_PersonInfomation1 = new UC_PersonInfomation();
             btnCloase = new Button();
+            lblAddOrNewUser = new Label();
+            uC_InterntionalDrivingLicenseInfo1 = new UC_InterntionalDrivingLicenseInfo();
             SuspendLayout();
-            // 
-            // lblAddOrNewUser
-            // 
-            lblAddOrNewUser.AutoSize = true;
-            lblAddOrNewUser.Font = new Font("Stencil", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAddOrNewUser.ForeColor = Color.DarkRed;
-            lblAddOrNewUser.Location = new Point(257, 9);
-            lblAddOrNewUser.Name = "lblAddOrNewUser";
-            lblAddOrNewUser.Size = new Size(286, 38);
-            lblAddOrNewUser.TabIndex = 2;
-            lblAddOrNewUser.Text = "Person Details";
-            // 
-            // uC_PersonInfomation1
-            // 
-            uC_PersonInfomation1.AccessibleName = "";
-            uC_PersonInfomation1.BorderStyle = BorderStyle.FixedSingle;
-            uC_PersonInfomation1.Location = new Point(2, 67);
-            uC_PersonInfomation1.Name = "uC_PersonInfomation1";
-            uC_PersonInfomation1.Size = new Size(813, 265);
-            uC_PersonInfomation1.TabIndex = 3;
             // 
             // btnCloase
             // 
             btnCloase.FlatStyle = FlatStyle.Popup;
             btnCloase.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCloase.ImageAlign = ContentAlignment.MiddleRight;
-            btnCloase.Location = new Point(715, 338);
+            btnCloase.Location = new Point(713, 392);
             btnCloase.Name = "btnCloase";
             btnCloase.Size = new Size(90, 37);
-            btnCloase.TabIndex = 77;
+            btnCloase.TabIndex = 44;
             btnCloase.Text = "Close";
             btnCloase.UseVisualStyleBackColor = true;
             btnCloase.Click += btnCloase_Click;
             // 
-            // PersonInfoForm
+            // lblAddOrNewUser
+            // 
+            lblAddOrNewUser.AutoSize = true;
+            lblAddOrNewUser.Font = new Font("Stencil", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAddOrNewUser.ForeColor = Color.DarkRed;
+            lblAddOrNewUser.Location = new Point(101, 25);
+            lblAddOrNewUser.Name = "lblAddOrNewUser";
+            lblAddOrNewUser.Size = new Size(612, 38);
+            lblAddOrNewUser.TabIndex = 43;
+            lblAddOrNewUser.Text = "Interntional Driver License Info";
+            // 
+            // uC_InterntionalDrivingLicenseInfo1
+            // 
+            uC_InterntionalDrivingLicenseInfo1.Location = new Point(3, 89);
+            uC_InterntionalDrivingLicenseInfo1.Name = "uC_InterntionalDrivingLicenseInfo1";
+            uC_InterntionalDrivingLicenseInfo1.Size = new Size(820, 259);
+            uC_InterntionalDrivingLicenseInfo1.TabIndex = 45;
+            // 
+            // InterntionalDrivaingLicenseInfoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(817, 375);
+            ClientSize = new Size(827, 448);
+            Controls.Add(uC_InterntionalDrivingLicenseInfo1);
             Controls.Add(btnCloase);
-            Controls.Add(uC_PersonInfomation1);
             Controls.Add(lblAddOrNewUser);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "PersonInfoForm";
-            Text = "PersonInfoForm";
-            Load += PersonInfoForm_Load;
+            Name = "InterntionalDrivaingLicenseInfoForm";
+            Text = "InterntionalDrivaingLicenseInfoForm";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lblAddOrNewUser;
-        private UC_PersonInfomation uC_PersonInfomation1;
         private Button btnCloase;
+        private Label lblAddOrNewUser;
+        private UC_InterntionalDrivingLicenseInfo uC_InterntionalDrivingLicenseInfo1;
     }
 }

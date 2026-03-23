@@ -49,8 +49,10 @@
             sechduleWritingTestToolStripMenuItem = new ToolStripMenuItem();
             sechduleDrivingTestToolStripMenuItem = new ToolStripMenuItem();
             issueLicenseToolStripMenuItem = new ToolStripMenuItem();
+            showLicenseHistoryToolStripMenuItem = new ToolStripMenuItem();
             pictureBox2 = new PictureBox();
             errorProvider1 = new ErrorProvider(components);
+            cancelToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRequestLocalDrivaingLicense).BeginInit();
             contextMenuStrip1.SuspendLayout();
@@ -134,9 +136,9 @@
             // contextMenuStrip1
             // 
             contextMenuStrip1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem, sechdulToolStripMenuItem, issueLicenseToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showLocalDrivingLiceseToolStripMenuItem, toolStripSeparator1, editToolStripMenuItem, deleteToolStripMenuItem, addLocalDrivingLicenseToolStripMenuItem, refrechToolStripMenuItem, sechdulToolStripMenuItem, issueLicenseToolStripMenuItem, showLicenseHistoryToolStripMenuItem, cancelToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(273, 186);
+            contextMenuStrip1.Size = new Size(273, 230);
             contextMenuStrip1.Opening += contextMenuStrip1_Opening;
             // 
             // showLocalDrivingLiceseToolStripMenuItem
@@ -226,6 +228,13 @@
             issueLicenseToolStripMenuItem.Text = "Issue Driving License (First Time)";
             issueLicenseToolStripMenuItem.Click += issueLicenseToolStripMenuItem_Click;
             // 
+            // showLicenseHistoryToolStripMenuItem
+            // 
+            showLicenseHistoryToolStripMenuItem.Name = "showLicenseHistoryToolStripMenuItem";
+            showLicenseHistoryToolStripMenuItem.Size = new Size(272, 22);
+            showLicenseHistoryToolStripMenuItem.Text = "Show License History";
+            showLicenseHistoryToolStripMenuItem.Click += showLicenseHistoryToolStripMenuItem_Click;
+            // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.hyperlocal;
@@ -239,6 +248,13 @@
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
+            // 
+            // cancelToolStripMenuItem
+            // 
+            cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
+            cancelToolStripMenuItem.Size = new Size(272, 22);
+            cancelToolStripMenuItem.Text = "Cancel";
+            cancelToolStripMenuItem.Click += cancelToolStripMenuItem_Click;
             // 
             // LocalDrivingLicenseApplicationForm
             // 
@@ -287,5 +303,7 @@
         private ToolStripMenuItem sechduleWritingTestToolStripMenuItem;
         private ToolStripMenuItem sechduleDrivingTestToolStripMenuItem;
         private ToolStripMenuItem issueLicenseToolStripMenuItem;
+        private ToolStripMenuItem showLicenseHistoryToolStripMenuItem;
+        private ToolStripMenuItem cancelToolStripMenuItem;
     }
 }

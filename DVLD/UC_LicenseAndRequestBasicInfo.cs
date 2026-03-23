@@ -28,10 +28,14 @@ namespace DVLD_Persntation
             lblAppliedForLicense.Text = LicenseClassService.GetClassNameByID(localDrivingLicenseService.License_Class_ID);
             int PassedTestsCount = DVLD_BusinessLogicLayer.TestAppointmentService.GetCountOfTestAppointmentsByLicenseDriveID(localDrivingLicenseService.Local_Driving_License_Id);
             lblPassedTest.Text = $"{PassedTestsCount}/3";
-            lblkShowLicenseInfo.Enabled = (PassedTestsCount==3);
+            lblkShowLicenseInfo.Enabled = (DVLD_BusinessLogicLayer.LicenseService.ExistLicenseDriveBy(localDrivingLicenseID));
             uS_ApplicationBaseInfo1.LoadData(localDrivingLicenseService.Request_id);
         }
 
-
+        private void lblkShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            DriverLicenseInfoForm driverLicenseInfoForm = new DriverLicenseInfoForm(_localDrivingLicenseID);
+            driverLicenseInfoForm.ShowDialog();
+        }
     }
 }

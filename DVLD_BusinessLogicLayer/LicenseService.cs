@@ -1,28 +1,28 @@
 using System;
-
+using System.Data;
 namespace DVLD_BusinessLogicLayer
 {
     public class LicenseService
     {
         public enum enIssueReason : byte
         {
-            FirstTime             = 1,
-            Renewal               = 2,
+            FirstTime = 1,
+            Renewal = 2,
             ReplacementForDamaged = 3,
-            ReplacementForLost    = 4
+            ReplacementForLost = 4
         }
 
-        public int LicenseID      { get; set; }
-        public int RequestID      { get; set; }
-        public int DriverID       { get; set; }
-        public int LicenseClass   { get; set; }
-        public DateTime IssueDate       { get; set; }
-        public DateTime ExpirationDate  { get; set; }
-        public string Notes       { get; set; }
-        public decimal PaidFees   { get; set; }
-        public bool IsActive      { get; set; }
+        public int LicenseID { get; set; }
+        public int RequestID { get; set; }
+        public int DriverID { get; set; }
+        public int LicenseClass { get; set; }
+        public DateTime IssueDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        public string Notes { get; set; }
+        public decimal PaidFees { get; set; }
+        public bool IsActive { get; set; }
         public enIssueReason IssueReason { get; set; }
-        public int CreatedBy      { get; set; }
+        public int CreatedBy { get; set; }
 
         private int Add()
         {
@@ -32,22 +32,28 @@ namespace DVLD_BusinessLogicLayer
                 PaidFees, IsActive, (byte)IssueReason, CreatedBy);
         }
 
+        public static DataTable GetLocalDriverLicenseHistoryBy(int driverID)
+        {
+            return DVLD_DataAccessLayer.LicenseRepository.GetLocalDriverLicenseHistoryBy(driverID);
+        }
+        public static DataTable GetInerntionalDriverLicenseHistoryBy(int driverID)
+        {
+            return DVLD_DataAccessLayer.LicenseRepository.GetInerntionalDriverLicenseHistoryBy(driverID);
+        }
+
         /// <summary>
         /// Issues a first-time driving license:
         /// creates driver if needed → adds license → updates Active_Licenses → completes request.
         /// Returns the new LicenseID, or -1 on failure.
         /// </summary>
-        public static int IssueFirstTimeLicense(
-            LocalDrivingLicenseService localDrivingLicense,
-            string notes,
-            int createdBySystemUserID)
+        public static int IssueFirstTimeLicense(LocalDrivingLicenseService localDrivingLicense,string notes,int createdBySystemUserID)
         {
             // 1. Check / create driver
-            int driverID = DVLD_DataAccessLayer.DriverRepository.GetDriverIDByUserID(localDrivingLicense.user_id);
+            int driverID = DriverService.GetDriverIDByUserID(localDrivingLicense.user_id);
             if (driverID == -1)
             {
-                driverID = DVLD_DataAccessLayer.DriverRepository.AddDriver(
-                    localDrivingLicense.user_id, DateTime.Now, createdBySystemUserID);
+                driverID = DriverService.AddDriver(localDrivingLicense.user_id, DateTime.Now, createdBySystemUserID);
+
                 if (driverID <= 0) return -1;
             }
 
@@ -55,29 +61,29 @@ namespace DVLD_BusinessLogicLayer
             LicenseClassService licenseClass = LicenseClassService.GetLicenseClassByID(localDrivingLicense.License_Class_ID);
             if (licenseClass == null) return -1;
 
-            DateTime issueDate      = DateTime.Now;
+            DateTime issueDate = DateTime.Now;
             DateTime expirationDate = issueDate.AddYears(licenseClass.ValidityLength);
 
             // 3. Add license record
             LicenseService license = new LicenseService
             {
-                RequestID      = localDrivingLicense.Request_id,
-                DriverID       = driverID,
-                LicenseClass   = localDrivingLicense.License_Class_ID,
-                IssueDate      = issueDate,
+                RequestID = localDrivingLicense.Request_id,
+                DriverID = driverID,
+                LicenseClass = localDrivingLicense.License_Class_ID,
+                IssueDate = issueDate,
                 ExpirationDate = expirationDate,
-                Notes          = notes,
-                PaidFees       = licenseClass.Fees,
-                IsActive       = true,
-                IssueReason    = enIssueReason.FirstTime,
-                CreatedBy      = createdBySystemUserID
+                Notes = notes,
+                PaidFees = licenseClass.Fees,
+                IsActive = true,
+                IssueReason = enIssueReason.FirstTime,
+                CreatedBy = createdBySystemUserID
             };
 
             int newLicenseID = license.Add();
             if (newLicenseID <= 0) return -1;
 
             // 4. Increment Active_Licenses on driver
-            DVLD_DataAccessLayer.DriverRepository.UpdateActiveLicenses(driverID, 1);
+            DriverService.UpdateActiveLicenses(driverID, DriverService.enActiveLicenseOperation.Increment);
 
             // 5. Mark request as Completed
             DVLD_DataAccessLayer.RequestRepository.ChangeRequestState(
@@ -86,9 +92,27 @@ namespace DVLD_BusinessLogicLayer
 
             return newLicenseID;
         }
+
+        public static DataRow GetDriverLicenseInfoByLocalDrivingLicenseID(int LocalDrivingLicenseID)
+        {
+            DataTable dt = DVLD_DataAccessLayer.LicenseRepository.GetDriverLicenseInfoByLocalDrivingLicenseID(LocalDrivingLicenseID);
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
+
+        public static DataRow GetDriverLicenseInfoByLicenseID(int LicenseID)
+        {
+            DataTable dt = DVLD_DataAccessLayer.LicenseRepository.GetDriverLicenseInfoByLicenseID(LicenseID);
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
+
         public static bool ExistLicenseDriveBy(int Local_Driving_License_Id)
         {
             return DVLD_DataAccessLayer.LicenseRepository.ExistLicenseDriveBy(Local_Driving_License_Id);
+        }
+
+        public static bool IsActiveLicenseDriveBy(int licenceID)
+        {
+            return DVLD_DataAccessLayer.LicenseRepository.IsActiveLicenseDriveBy(licenceID);
         }
     }
 }

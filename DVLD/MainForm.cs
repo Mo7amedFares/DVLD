@@ -81,11 +81,29 @@ namespace DVLD
         {
             openChildForm(new LocalDrivingLicenseApplicationForm());
         }
-         
+
         private void localDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddOrUpdateLocalDrivingLicenseForm addForm = new AddOrUpdateLocalDrivingLicenseForm(-1);
             openChildForm(addForm);
+        }
+
+        private void TSBtnDrivers_Click(object sender, EventArgs e)
+        {
+            DriversForm driversForm = new DriversForm();
+            openChildForm(driversForm);
+        }
+
+        private void intarnationalDrivaingLicenseApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InterntionalDrivingLicenseForm interntionalDrivingLicenseForm = new InterntionalDrivingLicenseForm();
+            openChildForm(interntionalDrivingLicenseForm);
+        }
+
+        private void interntionalDrivingLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewInterntionalDrivingLicenseForm newInterntionalDrivingLicenseForm = new NewInterntionalDrivingLicenseForm();
+            openChildForm(newInterntionalDrivingLicenseForm);
         }
     }
 }
